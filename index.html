@@ -13,9 +13,20 @@
         <div class='scrolling-bg'></div>
         <main>
             <div id='main-container' class='center-align row'>
-                <canvas id="main-canvas" class="border-box"></canvas>
-                <button onclick="download()">Download</button>
-                <a href="https://twitter.com/intent/tweet?text=TestingIntent&amp;hashtags=KSON_DOLL" target="_blank" class="share-twitter">Share on Twitter</a>
+                <div class="row u-full-width">
+                    <canvas id="main-canvas" class="border-box"></canvas>
+                </div>
+                <div class="row u-full-width">
+                    <button onclick="download()">Download</button>
+                    <a href="https://twitter.com/intent/tweet?text=TestingIntent&amp;hashtags=KSON_DOLL" target="_blank" class="share-twitter">
+                        <button>Share!</button>
+                    </a>
+                </div>
+                <div class="row u-full-width">
+                    <div class="center-align option-container grid-box" id="clothes-outer">
+                        <!-- <div class='grid-item'>✔️</div> -->
+                    </div>
+                </div>
             </div>
             <div class='footer'>
                 <!-- footer -->

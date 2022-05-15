@@ -49,6 +49,36 @@ body {
   width: 90%;
 }
 
+.option-container {
+    /* display: grid;
+    grid-template-columns: repeat(5, 1fr); */
+    width: 600px;
+    gap: 10px;
+    /* grid-auto-rows: minmax(100px, auto); */
+}
+
+.option-button {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  padding: 0;
+  background-color: aquamarine;
+}
+
+.option-icon {
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+.border-box, .grid-item {
+  border: #0d1b1e 2px solid;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 .footer {
   margin-top: calc(2* 1em);
 }
@@ -119,18 +149,10 @@ body {
   width: calc(520px/3);
 }
 
-#search-button {
-  width: calc(520px/4);
-}
-
 .inputs {
   border-radius: 0px;
   height: 48px !important;
   line-height: 48px !important;
-}
-
-.dropdowns {
-  background-color: white;
 }
 
 .scrolling-bg {
