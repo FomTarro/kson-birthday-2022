@@ -48,10 +48,12 @@ class Part {
      * 
      * @param {string} id 
      * @param {PartComponents[]} components 
+     * @param {string} bodyStyle
      */
-    constructor(id, components){
+    constructor(id, components, bodyStyle){
         this.id = id;
         this.components = components;
+        this.bodyStyle = bodyStyle;
     }
 }
 
@@ -74,7 +76,7 @@ function onPartChange(){
         torsoLayer.components
         .concat(hairFrontLayer.components)
         .concat(hairBackLayer.components)
-        .concat(clothesInner.components)
+        .concat(clothesInnerLayer.components)
         .concat(clothesOuterLayer.components)
         .concat(eyesLayer.components)
         .concat(eyebrowsLayer.components)
@@ -157,31 +159,49 @@ const mouthLayer = new PartLayer(2);
 const eyebrowsLayer = new PartLayer(4);
 const hairFrontLayer = new PartLayer(5);
 const hairBackLayer = new PartLayer(-1);
-const clothesInner = new PartLayer(1);
+const clothesInnerLayer = new PartLayer(1);
 const clothesOuterLayer = new PartLayer(2);
 
+function resetDefaults(){
+    torsoLayer.setComponents([]);
+    eyesLayer.setComponents([]);
+    mouthLayer.setComponents([]);
+    eyebrowsLayer.setComponents([]);
+    hairFrontLayer.setComponents([]);
+    hairBackLayer.setComponents([]);
+    clothesInnerLayer.setComponents([]);
+    clothesOuterLayer.setComponents([]);
+}
+
+const bodyStyleChibi = 'chibi';
+const bodyStyleReal = 'real'
+const bodyStyleAny = 'any';
+
+let currentBodyStyle = bodyStyleAny;
+
 const torsoOptions = [
-    new Part('basebody-chibi',  [new PartComponent('./img/body/basebody_chibi.png')])
+    new Part('basebody-chibi',  [new PartComponent('./img/body/basebody_chibi.png')], bodyStyleChibi),
+    new Part('basebody-real',  [new PartComponent('./img/body/basebody_real_scale.png')], bodyStyleReal)
 ]
-const eyeOptions = [
-    new Part('eyes-AGS.png', [new PartComponent('./img/eyes/eyes-AGS.png')])
+const eyesOptions = [
+    new Part('eyes-AGS.png', [new PartComponent('./img/eyes/eyes-AGS.png')], bodyStyleChibi)
 ]
 const mouthOptions = [
-    new Part('mouth-AGS', [new PartComponent('./img/mouth/mouth-AGS.png')])
+    new Part('mouth-AGS', [new PartComponent('./img/mouth/mouth-AGS.png')], bodyStyleChibi)
 ]
 const hairFrontOptions = [
-    new Part('hairstyle-AGS', [new PartComponent('./img/hair/hairstyle-AGS.png')])
+    new Part('hairstyle-AGS', [new PartComponent('./img/hair/hairstyle-AGS.png')], bodyStyleChibi)
 ]
 const hairBackOptions = [
-    new Part('hairstyle-AGS', [new PartComponent('./img/hair/hairstyle-AGS.png')])
+    new Part('hairstyle-AGS', [new PartComponent('./img/hair/hairstyle-AGS.png')], bodyStyleChibi)
 ]
 const clothesInnerOptions = [
-    new Part('inner-layer-clothing-AGS', [new PartComponent('./img/outfit/inner_layer_clothing-AGS.png')]),
-    new Part('inner-layer-clothing-KM', [new PartComponent('./img/outfit/inner_layer_clothing-KM.png')])
+    new Part('inner-layer-clothing-AGS', [new PartComponent('./img/outfit/inner_layer_clothing-AGS.png')], bodyStyleChibi),
+    new Part('inner-layer-clothing-KM', [new PartComponent('./img/outfit/inner_layer_clothing-KM.png')], bodyStyleChibi)
 ]
 const clothesOuterOptions = [
-    new Part('outer-layer-clothing-KM', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM.png')]),
-    new Part('outer-layer-clothing-PDR', [new PartComponent('./img/outfit_outer/outer_layer_clothing-PDR.png'), new PartComponent('./img/misc/SE-PDR.png', -3)])
+    new Part('outer-layer-clothing-KM', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM.png')], bodyStyleChibi),
+    new Part('outer-layer-clothing-PDR', [new PartComponent('./img/outfit_outer/outer_layer_clothing-PDR.png'), new PartComponent('./img/misc/SE-PDR.png', -3)], bodyStyleChibi)
 ]
 
 /**
@@ -190,16 +210,38 @@ const clothesOuterOptions = [
  * @param {PartLayer} layer
  * @param {HTMLElement} container 
  */
-function populateOptionGrid(options, layer, container,){
+function populateOptionGrid(options, layer, layerName){
     for(let i = 0; i < options.length; i++){
         const button = document.createElement('button');
+        const container = document.getElementById(layerName)
         const option = options[i];
         button.id = option.id;
-        button.classList.add('option-button', 'grid-item')
+        button.classList.add('option-button', 'grid-item', option.bodyStyle, layerName);
         button.addEventListener('click', function(){
             console.log('click ' + option.id);
+            // body determines style
+            if(options === torsoOptions){
+                if(currentBodyStyle != option.bodyStyle){
+                    resetDefaults();
+                }
+                currentBodyStyle = option.bodyStyle;
+                const allOptions = document.getElementsByClassName('option-button');
+                for(let k = 0; k < allOptions.length; k++){
+                    if(allOptions[k].classList.contains(option.bodyStyle)){
+                        allOptions[k].classList.remove('hide');
+                    }else{
+                        allOptions[k].classList.add('hide');
+                    }
+                }
+                // show all torso options
+                const torsoOptions = document.getElementsByClassName('torso');
+                for(let k = 0; k < torsoOptions.length; k++){
+                    torsoOptions[k].classList.remove('hide');
+                }
+            }
             setPart(option.id, options, layer);
         });
+        // create icons
         for(let j = 0; j < option.components.length; j++){
             const img = document.createElement('img');
             img.classList.add('option-icon');
@@ -210,6 +252,9 @@ function populateOptionGrid(options, layer, container,){
     }
 }
 
-populateOptionGrid(clothesOuterOptions, clothesOuterLayer, document.getElementById('clothes-outer'));
+populateOptionGrid(torsoOptions, torsoLayer, 'torso');
+populateOptionGrid(eyesOptions, eyesLayer, 'eyes');
+populateOptionGrid(clothesInnerOptions, clothesInnerLayer, 'clothes-inner');
+populateOptionGrid(clothesOuterOptions, clothesOuterLayer, 'clothes-outer');
 
 // Debug Methods
