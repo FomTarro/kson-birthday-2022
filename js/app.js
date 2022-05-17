@@ -154,13 +154,16 @@ function download(){
 initializeCanvas();
 
 const torsoLayer = new PartLayer(0);
+const armsLayer = new PartLayer(-1);
 const eyesLayer = new PartLayer(1);
 const mouthLayer = new PartLayer(2);
 const eyebrowsLayer = new PartLayer(4);
 const hairFrontLayer = new PartLayer(5);
 const hairBackLayer = new PartLayer(-1);
+const hairExtraLayer = new PartLayer(-1);
 const clothesInnerLayer = new PartLayer(1);
 const clothesOuterLayer = new PartLayer(2);
+const accessoryHairLayer = new PartLayer(-1);
 
 function resetDefaults(){
     torsoLayer.setComponents([]);
@@ -241,6 +244,7 @@ function populateOptionGrid(options, layer, layerName){
             }
             setPart(option.id, options, layer);
         });
+
         // create icons
         for(let j = 0; j < option.components.length; j++){
             const img = document.createElement('img');
@@ -250,11 +254,34 @@ function populateOptionGrid(options, layer, layerName){
         }
         container.appendChild(button);
     }
+
+    const navBarContainer = document.getElementById('navbar-container');
+    const navButton = document.createElement('button');
+    navButton.innerHTML = layerName;
+    navButton.addEventListener('click', function(){
+        showOptions(layerName);
+    });
+    navBarContainer.appendChild(navButton);
+}
+
+/**
+ * 
+ * @param {string} layerName 
+ */
+function showOptions(layerName){
+    const allOptionContainers = document.getElementsByClassName('option-container');
+    for(let k = 0; k < allOptionContainers.length; k++){
+        allOptionContainers[k].classList.add('hide');
+    }
+    const thisOptionContainer = document.getElementById(layerName);
+    thisOptionContainer.classList.remove('hide');
 }
 
 populateOptionGrid(torsoOptions, torsoLayer, 'torso');
 populateOptionGrid(eyesOptions, eyesLayer, 'eyes');
 populateOptionGrid(clothesInnerOptions, clothesInnerLayer, 'clothes-inner');
 populateOptionGrid(clothesOuterOptions, clothesOuterLayer, 'clothes-outer');
+
+showOptions('torso');
 
 // Debug Methods
