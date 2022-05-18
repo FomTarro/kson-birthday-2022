@@ -57,6 +57,11 @@ body {
   min-width: 150px;
 }
 
+#navbar-container{
+  gap: 10px;
+  overflow-x: scroll;
+}
+
 .option-container {
   /* display: grid;
   grid-template-columns: repeat(5, 1fr); */
