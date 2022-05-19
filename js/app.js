@@ -34,12 +34,14 @@ class PartComponent {
      * 
      * @param {string} url 
      * @param {number} sorting 
+     * @param {PartLayer[]} layersToHide
      */
-    constructor(url, sorting){
+    constructor(url, sorting, layersToHide){
         this.url = url;
         this.x = 0;
         this.y = 0;
         this.z = sorting;
+        this.layersToHide = layersToHide;
     }
 }
 
@@ -72,7 +74,7 @@ class Part {
 }
 
 function onPartChange(){
-    const layers = 
+    const components = 
         torsoLayer.components
         .concat(armsLayer.components)
         .concat(eyesLayer.components)
@@ -91,8 +93,21 @@ function onPartChange(){
             }
             return 1;
         });
-    console.log(JSON.stringify(layers));
-    let count = layers.length; 
+
+
+    let layersToHide = [];
+    for(let i = 0; i < components.length; i++){
+        if(components[i].layersToHide){
+            layersToHide = layersToHide.concat(components[i].layersToHide);
+        }
+    }
+    let componentsToHide = [];
+    for(let j = 0; j < layersToHide.length; j++){
+        componentsToHide = componentsToHide.concat(layersToHide[j].components);
+    }
+    const filteredComponents = components.filter(x => !componentsToHide.includes(x));
+    
+    let count = filteredComponents.length; 
     function onImageLoad() {
         count--;
         if(count === 0){
@@ -104,16 +119,16 @@ function onPartChange(){
         const canvas = document.getElementById('main-canvas');
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        count = layers.length;
-        for(let i = 0; i < layers.length; i++){
-            ctx.drawImage(layers[i].img, layers[i].x, layers[i].y);
+        count = filteredComponents.length;
+        for(let i = 0; i < filteredComponents.length; i++){
+            ctx.drawImage(filteredComponents[i].img, filteredComponents[i].x, filteredComponents[i].y);
         }
     }
 
-    for(let i = 0; i < layers.length; i++){
-        layers[i].img = new Image();
-        layers[i].img.src = layers[i].url;
-        layers[i].img.onload = onImageLoad;
+    for(let i = 0; i < filteredComponents.length; i++){
+        filteredComponents[i].img = new Image();
+        filteredComponents[i].img.src = filteredComponents[i].url;
+        filteredComponents[i].img.onload = onImageLoad;
         // TODO: why doesn't this work?
         // if(layers[i].img 
         // && layers[i].img.src != layers[i].url 
@@ -162,7 +177,7 @@ function random(){
      * @param {PartLayer} layer 
      */
     function filterAndSelect(options, layer){
-        const filtered = options.filter(x => x.bodyStyle == currentBodyStyle);
+        const filtered = options.filter(x => (x.bodyStyle == currentBodyStyle || x.bodyStyle == bodyStyleAny));
         const option = filtered[Math.floor(Math.random() * filtered.length)];
         if(option){
             selectOption(option, options, layer);
@@ -220,7 +235,7 @@ let currentBodyStyle = bodyStyleAny;
 
 const torsoOptions = [
     new Part('basebody-chibi', [new PartComponent('./img/body/basebody_chibi.png')], bodyStyleChibi),
-    new Part('basebody-real', [new PartComponent('./img/body/basebody_real_scale.png')], bodyStyleReal)
+    // new Part('basebody-real', [new PartComponent('./img/body/basebody_real_scale.png')], bodyStyleReal)
 ]
 const armsOptions = [
     new Part('hand-gesture-KM', [new PartComponent('./img/arms/hand_gesture-KM.png')], bodyStyleChibi),
@@ -229,9 +244,12 @@ const eyesOptions = [
     new Part('eyes-AGS', [new PartComponent('./img/eyes/eyes-AGS.png')], bodyStyleChibi)
 ]
 const eyebrowOptions = [
+    new Part('eyebrow-AGS', [new PartComponent('./img/eyebrows/eyebrows-AGS.png')], bodyStyleChibi),
+    new Part('eyebrow-KM', [new PartComponent('./img/eyebrows/eyebrows-KM.png')], bodyStyleChibi),
 ]
 const mouthOptions = [
-    new Part('mouth-AGS', [new PartComponent('./img/mouth/mouth-AGS.png')], bodyStyleChibi)
+    new Part('mouth-AGS', [new PartComponent('./img/mouth/mouth-AGS.png')], bodyStyleChibi),
+    new Part('mouth-KM', [new PartComponent('./img/mouth/mouth-KM.png')], bodyStyleChibi)
 ]
 const hairFrontOptions = [
     new Part('hairstyle-AGS', [new PartComponent('./img/hair/hairstyle-AGS.png')], bodyStyleChibi),
@@ -239,17 +257,27 @@ const hairFrontOptions = [
     new Part('hairstyle-KM-2', [new PartComponent('./img/hair/hairstyle-KM-2.png')], bodyStyleChibi)
 ]
 const hairBackOptions = [
-    new Part('hairstyle-AGS', [new PartComponent('./img/hair/hairstyle-AGS.png')], bodyStyleChibi)
+    new Part('hairstyle-behind-AGS', [new PartComponent('./img/hair-back/hair_behind-AGS-1.png')], bodyStyleChibi),
+    new Part('hairstyle-behind-KM-1', [new PartComponent('./img/hair-back/hair_behind-KM-1.png')], bodyStyleChibi),
+    new Part('hairstyle-behind-KM-2', [new PartComponent('./img/hair-back/hair_behind-KM-2.png')], bodyStyleChibi)
 ]
 const hairExtraOptions = [
+    new Part('hairstyle-extra-none', [new PartComponent('./img/none.png')], bodyStyleAny),
+    new Part('hairstyle-extra-KM-2', [new PartComponent('./img/hair-extra/additional_hair-KM-2.png')], bodyStyleChibi),
+    new Part('hairstyle-extra-KM-3', [new PartComponent('./img/hair-extra/additional_hair-KM-3.png')], bodyStyleChibi)
 ]
 const clothesInnerOptions = [
     new Part('inner-layer-clothing-AGS', [new PartComponent('./img/outfit/inner_layer_clothing-AGS.png')], bodyStyleChibi),
-    new Part('inner-layer-clothing-KM', [new PartComponent('./img/outfit/inner_layer_clothing-KM.png')], bodyStyleChibi)
+    new Part('inner-layer-clothing-KM', [new PartComponent('./img/outfit/inner_layer_clothing-KM.png')], bodyStyleChibi),
+    new Part('inner-layer-clothing-BAN', [new PartComponent('./img/outfit/inner_layer_clothing-BAN.png')], bodyStyleChibi),
+    new Part('inner-layer-clothing-ICGJ', [new PartComponent('./img/outfit/inner_layer_clothing-ICGJ.png')], bodyStyleReal)
 ]
 const clothesOuterOptions = [
+    new Part('outer-layer-clothing-none', [new PartComponent('./img/none.png')], bodyStyleAny),
     new Part('outer-layer-clothing-KM', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM.png')], bodyStyleChibi),
-    new Part('outer-layer-clothing-PDR', [new PartComponent('./img/outfit_outer/outer_layer_clothing-PDR.png'), new PartComponent('./img/misc/SE-PDR.png', -3)], bodyStyleChibi)
+    new Part('outer-layer-clothing-PDR', [new PartComponent('./img/outfit_outer/outer_layer_clothing-PDR.png', 0, [armsLayer]), new PartComponent('./img/misc/SE-PDR.png', -3)], bodyStyleChibi),
+    new Part('outer-layer-clothing-KM-1', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM-1.png')], bodyStyleChibi),
+    new Part('outer-layer-clothing-KM-2', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM-2.png')], bodyStyleChibi),
 ]
 const accessoryHairOptions = [
 ]
@@ -267,7 +295,7 @@ function setBodyStyle(newBodyStyle){
     currentBodyStyle = newBodyStyle;
     const allOptions = document.getElementsByClassName('option-button');
     for(let k = 0; k < allOptions.length; k++){
-        if(allOptions[k].classList.contains(newBodyStyle)){
+        if(allOptions[k].classList.contains(newBodyStyle) || allOptions[k].classList.contains(bodyStyleAny)){
             allOptions[k].classList.remove('hide');
         }else{
             allOptions[k].classList.add('hide');
@@ -328,6 +356,7 @@ function populateOptionGrid(options, layer, layerName){
 
     const navBarContainer = document.getElementById('navbar-container');
     const navButton = document.createElement('button');
+    navButton.classList.add('border-box');
     navButton.innerHTML = layerName;
     navButton.addEventListener('click', function(){
         showOptions(layerName);
