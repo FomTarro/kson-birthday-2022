@@ -241,7 +241,8 @@ const armsOptions = [
     new Part('hand-gesture-KM', [new PartComponent('./img/arms/hand_gesture-KM.png')], bodyStyleChibi),
 ]
 const eyesOptions = [
-    new Part('eyes-AGS', [new PartComponent('./img/eyes/eyes-AGS.png')], bodyStyleChibi)
+    new Part('eyes-AGS', [new PartComponent('./img/eyes/eyes-AGS.png')], bodyStyleChibi),
+    new Part('eyes-KM', [new PartComponent('./img/eyes/eyes-KM.png')], bodyStyleChibi)
 ]
 const eyebrowOptions = [
     new Part('eyebrow-AGS', [new PartComponent('./img/eyebrows/eyebrows-AGS.png')], bodyStyleChibi),
@@ -280,6 +281,8 @@ const clothesOuterOptions = [
     new Part('outer-layer-clothing-KM-2', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM-2.png')], bodyStyleChibi),
 ]
 const accessoryHairOptions = [
+    new Part('accessory-none', [new PartComponent('./img/none.png')], bodyStyleAny),
+    new Part('glasses-AGS', [new PartComponent('./img/misc/glasses-AGS.png', 4)], bodyStyleChibi),
 ]
 const accessoryHandOptions = [
 ]
@@ -387,8 +390,8 @@ populateOptionGrid(hairBackOptions, hairBackLayer, 'hair-back');
 populateOptionGrid(hairExtraOptions, hairExtraLayer, 'hair-extra');
 populateOptionGrid(clothesInnerOptions, clothesInnerLayer, 'clothes-inner');
 populateOptionGrid(clothesOuterOptions, clothesOuterLayer, 'clothes-outer');
-populateOptionGrid(accessoryHairOptions, accessoryHairOptions, 'accessories-hair');
-populateOptionGrid(accessoryHandOptions, accessoryHandOptions, 'accessories-hand');
+populateOptionGrid(accessoryHairOptions, accessoryHairLayer, 'accessories-hair');
+populateOptionGrid(accessoryHandOptions, accessoryHandLayer, 'accessories-hand');
 
 showOptions('torso');
 

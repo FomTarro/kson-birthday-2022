@@ -91,6 +91,8 @@ body {
   box-sizing: border-box;
   overflow: hidden;
   gap: 10px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .footer {
@@ -143,12 +145,6 @@ body {
 
 .no-wrap {
   flex-wrap: nowrap;
-}
-
-.border-box {
-  border: black 2px solid;
-  box-sizing: border-box;
-  background-color: white;
 }
 
 .buttons, .dropdowns, .inputs {
