@@ -12,26 +12,28 @@
     <body>
         <div class='scrolling-bg'></div>
         <main>
-            <div id='main-container' class='center-align row'>
-                <div class="row u-full-width">
+            <div id='main-container'>
+                <div class="row">
                     <canvas id="main-canvas" class="border-box"></canvas>
                 </div>
-                <div class="row u-full-width">
-                    <div id="misc-container" class="center-align">
-                        <button class="border-box misc-button" onclick="download()">Download</button>
-                        <a href="https://twitter.com/intent/tweet?text=TestingIntent&amp;hashtags=KSON_DOLL" target="_blank" class="share-twitter">
-                            <button class="border-box misc-button">Share!</button>
-                        </a>
-                        <button class="border-box misc-button" onclick="random()">Random</button>
+                <div id="user-interface" class="row">
+                    <div class="row">
+                        <div id="misc-container" class="center-align">
+                            <button class="border-box misc-button" onclick="download()">Download</button>
+                            <a href="https://twitter.com/intent/tweet?text=TestingIntent&amp;hashtags=KSON_DOLL" target="_blank" class="share-twitter">
+                                <button class="border-box misc-button">Share!</button>
+                            </a>
+                            <button class="border-box misc-button" onclick="random()">Random</button>
+                        </div>
                     </div>
-                </div>
-                <div id="navbar-container" class="center-align row u-full-width">
-                    <!-- stuff goes here -->
-                </div>
-                <div id="options-container" class="row u-full-width">
-                    <!-- <div class="center-align option-container grid-box" id="torso">
-                         <div class='grid-item'>✔️</div>
-                    </div> -->
+                    <div id="navbar-container" class="center-align row u-full-width">
+                        <!-- stuff goes here -->
+                    </div>
+                    <div id="options-container" class="row u-full-width">
+                        <!-- <div class="center-align option-container grid-box" id="torso">
+                            <div class='grid-item'>✔️</div>
+                        </div> -->
+                    </div>
                 </div>
             </div>
             <div class='footer'>

@@ -1,6 +1,6 @@
 class PartLayer {
     /**
-     * Class for holding information about a rendering alyer of the doll
+     * Class for holding information about a rendering layer of the doll
      * @param {number} baseSorting Layer to sort components on, if none is provided
      */
     constructor(baseSorting) {
@@ -94,19 +94,21 @@ function onPartChange(){
             return 1;
         });
 
-
+    // figure out which components indicate that layers need to be hidden
     let layersToHide = [];
     for(let i = 0; i < components.length; i++){
         if(components[i].layersToHide){
             layersToHide = layersToHide.concat(components[i].layersToHide);
         }
     }
+    // filter out all components from layers that say they need to be hidden
     let componentsToHide = [];
     for(let j = 0; j < layersToHide.length; j++){
         componentsToHide = componentsToHide.concat(layersToHide[j].components);
     }
+
+    // display only remaining, filtered list
     const filteredComponents = components.filter(x => !componentsToHide.includes(x));
-    
     let count = filteredComponents.length; 
     function onImageLoad() {
         count--;
