@@ -359,14 +359,14 @@ function populateOptionGrid(options, layer, layerName){
     }
     document.getElementById('options-container').appendChild(container);
 
-    const navBarContainer = document.getElementById('navbar-container');
+    const categoryContainer = document.getElementById('category-container');
     const navButton = document.createElement('button');
-    navButton.classList.add('border-box');
+    navButton.classList.add('border-box', 'category-button');
     navButton.innerHTML = layerName;
     navButton.addEventListener('click', function(){
         showOptions(layerName);
     });
-    navBarContainer.appendChild(navButton);
+    categoryContainer.appendChild(navButton);
 }
 
 /**
