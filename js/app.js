@@ -399,4 +399,15 @@ showOptions('torso');
 
 initializeCanvas();
 
+forceSize();
+
+function forceSize() {
+
+    const canvas = document.getElementById('main-canvas-container');
+    const drawer = document.getElementById('user-interface-container')
+    drawer.style.height = canvas.clientHeight + "px"
+    console.log(canvas.clientHeight);
+  }
+  
+  window.onresize = forceSize;
 // Debug Methods
