@@ -79,7 +79,7 @@ body {
   margin: auto;
   width: 90%;
   max-width: 1200px;
-  gap: 7.5px;
+  gap: 5px;
 }
 
 #main-canvas-container{
@@ -122,13 +122,13 @@ body {
   max-width: 600px;
   display: grid;
   /* grid-template-columns: repeat(2, 1fr); */
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 15% calc(85% - 5px);
   gap: 0px 5px;
 }
 
 #misc-container{
   height: 100%;
-  width: calc(100% + 5px);
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px
