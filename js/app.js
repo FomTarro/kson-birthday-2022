@@ -362,7 +362,7 @@ function populateOptionGrid(options, layer, layerName){
     }
     document.getElementById('options-container').appendChild(container);
 
-    const categoryContainer = document.getElementById('category-container');
+    const categoryContainer = document.getElementById('category-inner-container');
     const navButton = document.createElement('button');
     navButton.classList.add('border-box', 'category-button');
     navButton.innerHTML = layerName;
