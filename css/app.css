@@ -54,7 +54,7 @@ body {
   justify-content: center;
   width: 100%;
   display: flex;
-  margin-bottom: 1em;
+  /* margin-bottom: 1em; */
   flex-wrap: wrap;
 }
 
@@ -255,6 +255,46 @@ body {
   height: auto;
 }
 
+.mouth > .option-icon {
+  top: 15%;
+  transform: scale(5);
+}
+
+.eyes > .option-icon {
+  top: 20%;
+  transform: scale(2);
+}
+
+.eyebrows > .option-icon {
+  top: 20%;
+  transform: scale(2);
+}
+
+.hair-front > .option-icon {
+  top: 30%;
+  transform: scale(1.5);
+}
+
+.hair-back > .option-icon {
+  top: 30%;
+  transform: scale(1.5);
+}
+
+.hair-extra > .option-icon {
+  top: 30%;
+  transform: scale(1.5);
+}
+
+.clothes-inner > .option-icon {
+  top: -30%;
+  transform: scale(1.5)
+}
+
+.clothes-outer > .option-icon {
+  top: -30%;
+  transform: scale(1.5)
+}
+
 .footer {
   margin-top: calc(2* 1em);
 }
@@ -340,7 +380,8 @@ body {
   }
   #user-interface-container{
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 15% calc(85% - 5px);
+    gap: 5px 5px;
   }
   #category-container{
     grid-auto-flow: column;
