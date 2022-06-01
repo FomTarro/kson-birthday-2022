@@ -36,6 +36,7 @@ body {
 
 .frame {
   position: absolute;
+  top: 0;
   pointer-events: none;
 }
 
@@ -94,11 +95,12 @@ body {
 }
 
 #user-interface-container{
+  height: 600px;
   max-width: 600px;
   display: grid;
   /* grid-template-columns: repeat(2, 1fr); */
   grid-template-columns: 15% 85%;
-  gap: 5px;
+  gap: 0px 5px;
 }
 
 #misc-container{
@@ -183,10 +185,19 @@ body {
   height: 100px;
   padding: 0;
 
+  /* border-style: solid;
+  border-width: 12px;
+  border-image-source: url('../img/site-style/part_frame_sized.png');
+  border-image-slice: 20%; */
+}
+
+.option-frame{
   border-style: solid;
   border-width: 12px;
   border-image-source: url('../img/site-style/part_frame_sized.png');
   border-image-slice: 20%;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
 }
 
 .option-icon {

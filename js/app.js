@@ -355,6 +355,9 @@ function populateOptionGrid(options, layer, layerName){
             img.src = option.components[j].url;
             button.append(img);
         }
+        const frame = document.createElement('div');
+        frame.classList.add('frame', 'option-frame');
+        button.appendChild(frame);
         container.appendChild(button);
     }
     document.getElementById('options-container').appendChild(container);
@@ -402,12 +405,11 @@ initializeCanvas();
 forceSize();
 
 function forceSize() {
-
     const canvas = document.getElementById('main-canvas-container');
     const drawer = document.getElementById('user-interface-container')
-    drawer.style.height = canvas.clientHeight + "px"
+    drawer.style.height = canvas.offsetHeight + 1 + 'px'
     console.log(canvas.clientHeight);
-  }
+}
   
-  window.onresize = forceSize;
+window.onresize = forceSize;
 // Debug Methods
