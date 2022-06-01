@@ -406,7 +406,7 @@ forceSize();
 
 function forceSize() {
     const canvas = document.getElementById('main-canvas-container');
-    const drawer = document.getElementById('user-interface-container')
+    const drawer = document.getElementById('right-side-container')
     drawer.style.height = canvas.offsetHeight + 1 + 'px'
     console.log(canvas.clientHeight);
 }
