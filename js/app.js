@@ -360,7 +360,7 @@ function populateOptionGrid(options, layer, layerName){
         button.appendChild(frame);
         container.appendChild(button);
     }
-    document.getElementById('options-container').appendChild(container);
+    document.getElementById('options-inner-container').appendChild(container);
 
     const categoryContainer = document.getElementById('category-inner-container');
     const navButton = document.createElement('button');

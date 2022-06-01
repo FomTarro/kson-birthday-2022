@@ -35,7 +35,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 0px;  /* Remove scrollbar space */
+  width: 100%;  /* Remove scrollbar space */
   background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
@@ -150,11 +150,42 @@ body {
 }
 
 #misc-button-random{
-  background-image: url('../img/site-style/button_random.png');
+  position: relative;
+  background-image: url('../img/site-style/button1_bg.png');
+}
+
+#misc-button-random > img {
+  width: 100%;
+}
+
+.misc-button-random-frame{
+  border-style: solid;
+  border-width: 12px;
+  border-image-source: url(../img/site-style/button1_f.png);
+  border-image-slice: 15;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  z-index: 100;
 }
 
 #misc-button-generate{
-  background-image: url('../img/site-style/button_generate.png');
+  position: relative;
+  background-image: url('../img/site-style/button2_bg.png');
+}
+
+#misc-button-generate > img {
+  top: 3px;
+  width: 100%;
+}
+
+.misc-button-generate-frame{
+  border-style: solid;
+  border-width: 12px;
+  border-image-source: url(../img/site-style/button2_f.png);
+  border-image-slice: 15;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  z-index: 100;
 }
 
 #category-container{
@@ -214,6 +245,12 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   position: relative;
+  overflow-y: hidden;
+}
+
+#options-inner-container{
+  width: 100%;
+  height: 100%;
   overflow-y: scroll;
 }
 
@@ -224,6 +261,7 @@ body {
   border-image-slice: 15;
   width: calc(100% - 22px);
   height:calc(100% - 22px);
+  z-index: 500;
 }
 
 .option-container {
