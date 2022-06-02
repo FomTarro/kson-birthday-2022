@@ -476,6 +476,17 @@ body {
     overflow-y: hidden;
     flex-direction: row;
     flex-wrap: nowrap;
+    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    justify-content: flex-start;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .category-button{
+    min-width: 6vh;
+    margin: 0;
   }
 
 }
