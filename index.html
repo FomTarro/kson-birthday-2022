@@ -9,13 +9,15 @@
     <link rel="stylesheet" type="text/css" href="./css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="./css/app.css">
 </head>
-<img src="img/site-style/preview_frame_sized.png" class="hide">
     <body>
         <div class='scrolling-bg'></div>
         <main>
             <div id='main-container'>
                 <div id="main-canvas-container" class="border-box row">
                     <div class="frame canvas-frame"></div>
+                    <!-- <div>
+                        <img src="img/site-style/kson_with_doll.png">
+                    </div> -->
                     <canvas id="main-canvas" class="border-box"></canvas>
                     <!-- <div class="row">
                         Download, share, credits, ect
@@ -31,18 +33,21 @@
                 <div id="right-side-container">
                     <div id="user-interface-container" class="row">
                         <div id="category-container" class="border-box center-align">
-                            <div class="frame category-frame"></div>
-                            <div id="category-inner-container">
-
+                            <div class="frame category-frame">
+                                <!-- <img class="button-arrow" src="img/site-style/button_arrow.png">
+                                <img class="button-arrow" src="img/site-style/button_arrow.png"> -->
                             </div>
-                            <!-- stuff goes here -->
+                            <div id="category-inner-container" class="center-align">
+                                <div id="category-inner-inner-container" class="center-align">
+                                    <!-- stuff goes here -->
+                                </div>
+                            </div>
                         </div>
                         <div id="options-container" class="border-box center-align">
                             <div class="frame options-frame"></div>
-                            <div id="options-inner-container" class="center-align"></div>
-                            <!-- <div class="center-align option-container grid-box" id="torso">
-                                <div class='grid-item'>✔️</div>
-                            </div> -->
+                            <div id="options-inner-container" class="center-align">
+                                <!-- stuff goes here -->
+                            </div>
                         </div>
                     </div>
                     <div id="misc-container">
@@ -58,12 +63,11 @@
                         </button>
                     </div>
                 </div>
-                <!-- <div id="misc-container" class="row">
-                    <button class="border-box misc-button" onclick="random()"><img src='img/site-style/button_random.png'></button>
-                </div> -->
             </div>
-            <div class='footer'>
-                <!-- footer -->
+            <!-- <div class='footer'>
+            </div> -->
+            <div id="pop-up-container" class="hide">
+
             </div>
         </main>
     </body>

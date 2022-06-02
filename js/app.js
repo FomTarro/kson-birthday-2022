@@ -338,31 +338,33 @@ function populateOptionGrid(options, layer, layerName){
     container.classList.add('center-align', 'option-container', 'grid-box');
     container.id = layerName;
     for(let i = 0; i < options.length; i++){
-        const button = document.createElement('button');
+        for(let f = 0; f < 12; f++){
+            const button = document.createElement('button');
 
-        const option = options[i];
-        button.id = option.id;
-        button.classList.add('option-button', 'grid-item', option.bodyStyle, layerName);
-        button.addEventListener('click', function(){
-            console.log('click ' + option.id);
-            selectOption(option, options, layer);
-        });
+            const option = options[i];
+            button.id = option.id;
+            button.classList.add('option-button', 'grid-item', option.bodyStyle, layerName);
+            button.addEventListener('click', function(){
+                console.log('click ' + option.id);
+                selectOption(option, options, layer);
+            });
 
-        // create icons
-        for(let j = 0; j < option.components.length; j++){
-            const img = document.createElement('img');
-            img.classList.add('option-icon');
-            img.src = option.components[j].url;
-            button.append(img);
+            // create icons
+            for(let j = 0; j < option.components.length; j++){
+                const img = document.createElement('img');
+                img.classList.add('option-icon');
+                img.src = option.components[j].url;
+                button.append(img);
+            }
+            const frame = document.createElement('div');
+            frame.classList.add('frame', 'option-frame');
+            button.appendChild(frame);
+            container.appendChild(button);
         }
-        const frame = document.createElement('div');
-        frame.classList.add('frame', 'option-frame');
-        button.appendChild(frame);
-        container.appendChild(button);
     }
     document.getElementById('options-inner-container').appendChild(container);
 
-    const categoryContainer = document.getElementById('category-inner-container');
+    const categoryContainer = document.getElementById('category-inner-inner-container');
     const navButton = document.createElement('button');
     navButton.classList.add('border-box', 'category-button');
     navButton.innerHTML = layerName;
@@ -407,8 +409,11 @@ forceSize();
 function forceSize() {
     const canvas = document.getElementById('main-canvas-container');
     const drawer = document.getElementById('right-side-container')
-    drawer.style.height = canvas.offsetHeight + 1 + 'px'
-    console.log(canvas.clientHeight);
+    if(window.innerWidth >= 1200){
+        drawer.style.height = canvas.offsetHeight + 1 + 'px'
+    }else{
+        drawer.style.height = 'calc('+ (window.innerHeight - canvas.offsetHeight + 1 - 5) + 'px - 2em)';
+    }
 }
   
 window.onresize = forceSize;
