@@ -378,14 +378,26 @@ function initializeCanvas(){
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+function getPhotoURL(){
+    try{
+        return document.getElementById('main-canvas').toDataURL('image/png');
+    }catch(e){
+        console.error(e);
+        // TODO placeholder "Something went wrong!"
+        return './img/body/basebody_chibi.png';
+    }
+}
+
 function download(){
-    let canvasImage = document.getElementById('main-canvas').toDataURL('image/png');
+    let canvasImage = getPhotoURL();
     // this can be used to download any image from webpage to local disk
     let xhr = new XMLHttpRequest();
     xhr.responseType = 'blob';
-    xhr.onload = function () {
+    xhr.onload = function() {
         let a = document.createElement('a');
-        a.href = window.URL.createObjectURL(xhr.response);
+        const urlCreator = window.URL || window.webkitURL;
+        a.href = urlCreator.createObjectURL(xhr.response);
+        // document.getElementById('pop-up-photo').src = a.href;
         a.download = 'dress_up_doll.png';
         a.style.display = 'none';
         document.body.appendChild(a);
@@ -396,8 +408,18 @@ function download(){
     xhr.send();
 }
 
+function initializePopup(){
+    const popup = document.getElementById('pop-up-container');
+    popup.addEventListener('click', close);
+    const popUpInner = document.getElementById('pop-up-content-container');
+    popUpInner.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+}
+
 function finalize(){
     const popup = document.getElementById('pop-up-container');
+    document.getElementById('pop-up-photo').src = getPhotoURL();
     popup.classList.remove('hide');
     popup.classList.add('fade-in');
 }
@@ -406,7 +428,7 @@ function close(){
     console.log('closing')
     const popup = document.getElementById('pop-up-container');
     popup.classList.add('hide');
-    popup.classList.hide('fade-in');
+    popup.classList.remove('fade-in');
 }
 
 function random(){
@@ -440,7 +462,7 @@ function random(){
   
 window.onresize = forceSize;
 initializeCanvas();
+initializePopup();
 forceSize();
-const popup = document.getElementById('pop-up-container');
-popup.addEventListener('click', close);
+
 // Debug Methods
