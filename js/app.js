@@ -186,7 +186,7 @@ const torsoOptions = [
     new Part('basebody-real-abs', [new PartComponent('./img/body/real/basebody-real-abs.png')], bodyStyleReal)
 ]
 const armsOptions = [
-    new Part('hand-gesture-KM', [new PartComponent('./img/arms/hand_gesture-KM.png')], bodyStyleChibi),
+    // new Part('hand-gesture-KM', [new PartComponent('./img/arms/hand_gesture-KM.png')], bodyStyleChibi),
 ]
 const eyesOptions = [
     new Part('eyes-AGS', [new PartComponent('./img/eyes/chibi/eyes-AGS.png')], bodyStyleChibi),
@@ -301,40 +301,54 @@ const eyebrowOptions = [
 
 ]
 const mouthOptions = [
-    new Part('mouth-AGS', [new PartComponent('./img/mouth/mouth-AGS.png')], bodyStyleChibi),
-    new Part('mouth-KM', [new PartComponent('./img/mouth/mouth-KM.png')], bodyStyleChibi)
+    new Part('mouth-AGS', [new PartComponent('./img/mouth/chibi/mouth-AGS.png')], bodyStyleChibi),
+    new Part('mouth-cheese- (1)', [new PartComponent('./img/mouth/chibi/mouth-cheese- (1).png')], bodyStyleChibi),
+    new Part('mouth-cheese- (3)', [new PartComponent('./img/mouth/chibi/mouth-cheese- (3).png')], bodyStyleChibi),
+    new Part('mouth-ICGJ- (1)', [new PartComponent('./img/mouth/chibi/mouth-ICGJ- (1).png')], bodyStyleChibi),
+    new Part('mouth-ICGJ- (2)', [new PartComponent('./img/mouth/chibi/mouth-ICGJ- (2).png')], bodyStyleChibi),
+    new Part('mouth-ICGJ- (4)', [new PartComponent('./img/mouth/chibi/mouth-ICGJ- (4).png')], bodyStyleChibi),
+    new Part('mouth-ICGJ- (5)', [new PartComponent('./img/mouth/chibi/mouth-ICGJ- (5).png')], bodyStyleChibi),
+    new Part('mouth-KM)', [new PartComponent('./img/mouth/chibi/mouth-KM.png')], bodyStyleChibi),
+    new Part('mouth-UTAH- (1)', [new PartComponent('./img/mouth/chibi/mouth-UTAH- (1).png')], bodyStyleChibi),
+    new Part('mouth-UTAH- (2)', [new PartComponent('./img/mouth/chibi/mouth-UTAH- (2).png')], bodyStyleChibi),
+    new Part('mouth-UTAH- (3)', [new PartComponent('./img/mouth/chibi/mouth-UTAH- (3).png')], bodyStyleChibi),
+    new Part('mouth-UTAH- (4)', [new PartComponent('./img/mouth/chibi/mouth-UTAH- (4).png')], bodyStyleChibi),
+    new Part('mouth-sonemi', [new PartComponent('./img/mouth/chibi/mouth-sonemi.png')], bodyStyleChibi),
+    new Part('mouth-yu ya iyaui', [new PartComponent('./img/mouth/chibi/mouth-yu ya iyaui.png')], bodyStyleChibi),
+    new Part('mouth-tabetai- (1)', [new PartComponent('./img/mouth/chibi/mouth-tabetai- (1).png')], bodyStyleChibi),
+    new Part('mouth-tabetai- (2)', [new PartComponent('./img/mouth/chibi/mouth-tabetai- (2).png')], bodyStyleChibi),
 ]
 const hairFrontOptions = [
-    new Part('hairstyle-AGS', [new PartComponent('./img/hair/hairstyle-AGS.png')], bodyStyleChibi),
-    new Part('hairstyle-KM-1', [new PartComponent('./img/hair/hairstyle-KM-1.png')], bodyStyleChibi),
-    new Part('hairstyle-KM-2', [new PartComponent('./img/hair/hairstyle-KM-2.png')], bodyStyleChibi)
+    // new Part('hairstyle-AGS', [new PartComponent('./img/hair/hairstyle-AGS.png')], bodyStyleChibi),
+    // new Part('hairstyle-KM-1', [new PartComponent('./img/hair/hairstyle-KM-1.png')], bodyStyleChibi),
+    // new Part('hairstyle-KM-2', [new PartComponent('./img/hair/hairstyle-KM-2.png')], bodyStyleChibi)
 ]
 const hairBackOptions = [
-    new Part('hairstyle-behind-AGS', [new PartComponent('./img/hair-back/hair_behind-AGS-1.png')], bodyStyleChibi),
-    new Part('hairstyle-behind-KM-1', [new PartComponent('./img/hair-back/hair_behind-KM-1.png')], bodyStyleChibi),
-    new Part('hairstyle-behind-KM-2', [new PartComponent('./img/hair-back/hair_behind-KM-2.png')], bodyStyleChibi)
+    // new Part('hairstyle-behind-AGS', [new PartComponent('./img/hair-back/hair_behind-AGS-1.png')], bodyStyleChibi),
+    // new Part('hairstyle-behind-KM-1', [new PartComponent('./img/hair-back/hair_behind-KM-1.png')], bodyStyleChibi),
+    // new Part('hairstyle-behind-KM-2', [new PartComponent('./img/hair-back/hair_behind-KM-2.png')], bodyStyleChibi)
 ]
 const hairExtraOptions = [
-    new Part('hairstyle-extra-none', [new PartComponent('./img/none.png')], bodyStyleAny),
-    new Part('hairstyle-extra-KM-2', [new PartComponent('./img/hair-extra/additional_hair-KM-2.png')], bodyStyleChibi),
-    new Part('hairstyle-extra-KM-3', [new PartComponent('./img/hair-extra/additional_hair-KM-3.png')], bodyStyleChibi)
+    // new Part('hairstyle-extra-none', [new PartComponent('./img/none.png')], bodyStyleAny),
+    // new Part('hairstyle-extra-KM-2', [new PartComponent('./img/hair-extra/additional_hair-KM-2.png')], bodyStyleChibi),
+    // new Part('hairstyle-extra-KM-3', [new PartComponent('./img/hair-extra/additional_hair-KM-3.png')], bodyStyleChibi)
 ]
 const clothesInnerOptions = [
-    new Part('inner-layer-clothing-AGS', [new PartComponent('./img/outfit/inner_layer_clothing-AGS.png')], bodyStyleChibi),
-    new Part('inner-layer-clothing-KM', [new PartComponent('./img/outfit/inner_layer_clothing-KM.png')], bodyStyleChibi),
-    new Part('inner-layer-clothing-BAN', [new PartComponent('./img/outfit/inner_layer_clothing-BAN.png')], bodyStyleChibi),
-    new Part('inner-layer-clothing-ICGJ', [new PartComponent('./img/outfit/inner_layer_clothing-ICGJ.png')], bodyStyleReal)
+    // new Part('inner-layer-clothing-AGS', [new PartComponent('./img/outfit/inner_layer_clothing-AGS.png')], bodyStyleChibi),
+    // new Part('inner-layer-clothing-KM', [new PartComponent('./img/outfit/inner_layer_clothing-KM.png')], bodyStyleChibi),
+    // new Part('inner-layer-clothing-BAN', [new PartComponent('./img/outfit/inner_layer_clothing-BAN.png')], bodyStyleChibi),
+    // new Part('inner-layer-clothing-ICGJ', [new PartComponent('./img/outfit/inner_layer_clothing-ICGJ.png')], bodyStyleReal)
 ]
 const clothesOuterOptions = [
-    new Part('outer-layer-clothing-none', [new PartComponent('./img/none.png')], bodyStyleAny),
-    new Part('outer-layer-clothing-KM', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM.png')], bodyStyleChibi),
-    new Part('outer-layer-clothing-PDR', [new PartComponent('./img/outfit_outer/outer_layer_clothing-PDR.png', 0, [armsLayer]), new PartComponent('./img/misc/SE-PDR.png', -3)], bodyStyleChibi),
-    new Part('outer-layer-clothing-KM-1', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM-1.png')], bodyStyleChibi),
-    new Part('outer-layer-clothing-KM-2', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM-2.png')], bodyStyleChibi),
+    // new Part('outer-layer-clothing-none', [new PartComponent('./img/none.png')], bodyStyleAny),
+    // new Part('outer-layer-clothing-KM', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM.png')], bodyStyleChibi),
+    // new Part('outer-layer-clothing-PDR', [new PartComponent('./img/outfit_outer/outer_layer_clothing-PDR.png', 0, [armsLayer]), new PartComponent('./img/misc/SE-PDR.png', -3)], bodyStyleChibi),
+    // new Part('outer-layer-clothing-KM-1', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM-1.png')], bodyStyleChibi),
+    // new Part('outer-layer-clothing-KM-2', [new PartComponent('./img/outfit_outer/outer_layer_clothing-KM-2.png')], bodyStyleChibi),
 ]
 const accessoryHairOptions = [
-    new Part('accessory-none', [new PartComponent('./img/none.png')], bodyStyleAny),
-    new Part('glasses-AGS', [new PartComponent('./img/misc/glasses-AGS.png', 4)], bodyStyleChibi),
+    // new Part('accessory-none', [new PartComponent('./img/none.png')], bodyStyleAny),
+    // new Part('glasses-AGS', [new PartComponent('./img/misc/glasses-AGS.png', 4)], bodyStyleChibi),
 ]
 const accessoryHandOptions = [
 ]
