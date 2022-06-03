@@ -145,62 +145,6 @@ function onPartChange(){
     }
 }
 
-function initializeCanvas(){
-    const canvas = document.getElementById('main-canvas');
-    const ctx = canvas.getContext("2d");
-    canvas.width  = 600;
-    canvas.height = 600;
-    ctx.fillStyle = "#f0f8ff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-function download(){
-    let canvasImage = document.getElementById('main-canvas').toDataURL('image/png');
-    // this can be used to download any image from webpage to local disk
-    let xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function () {
-        let a = document.createElement('a');
-        a.href = window.URL.createObjectURL(xhr.response);
-        a.download = 'dress_up_doll.png';
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-      };
-      xhr.open('GET', canvasImage); // This is to download the canvas Image
-      xhr.send();
-}
-
-function random(){
-    /**
-     * 
-     * @param {Part[]} options 
-     * @param {PartLayer} layer 
-     */
-    function filterAndSelect(options, layer){
-        const filtered = options.filter(x => (x.bodyStyle == currentBodyStyle || x.bodyStyle == bodyStyleAny));
-        const option = filtered[Math.floor(Math.random() * filtered.length)];
-        if(option){
-            selectOption(option, options, layer);
-        }
-    }
-
-    const torso = torsoOptions[Math.floor(Math.random() * torsoOptions.length)];
-    selectOption(torso, torsoOptions, torsoLayer);
-    filterAndSelect(armsOptions, armsLayer);
-    filterAndSelect(eyesOptions, eyesLayer);
-    filterAndSelect(eyebrowOptions, eyebrowLayer);
-    filterAndSelect(mouthOptions, mouthLayer);
-    filterAndSelect(hairFrontOptions, hairFrontLayer);
-    filterAndSelect(hairBackOptions, hairBackLayer);
-    filterAndSelect(hairExtraOptions, hairExtraLayer);
-    filterAndSelect(clothesInnerOptions, clothesInnerLayer);
-    filterAndSelect(clothesOuterOptions, clothesOuterLayer);
-    filterAndSelect(accessoryHairOptions, accessoryHairLayer);
-    filterAndSelect(accessoryHandOptions, accessoryHandLayer);
-}
-
 const torsoLayer = new PartLayer(0);
 const armsLayer = new PartLayer(0);
 const eyesLayer = new PartLayer(1);
@@ -321,6 +265,14 @@ function setBodyStyle(newBodyStyle){
  */
 function selectOption(option, options, layer){
     // body determines style
+    const button = document.getElementById(option.id);
+    if(button){
+        const siblings = button.parentElement.children;
+        for(let i = 0; i < siblings.length; i++){
+            siblings[i].classList.remove('selected');
+        }
+        button.classList.add('selected');
+    }
     if(options === torsoOptions){
         setBodyStyle(option.bodyStyle);
     }
@@ -369,6 +321,11 @@ function populateOptionGrid(options, layer, layerName){
     navButton.classList.add('border-box', 'category-button');
     navButton.innerHTML = layerName;
     navButton.addEventListener('click', function(){
+        const siblings = categoryContainer.children;
+        for(let h=0;h<siblings.length;h++){
+            siblings[h].classList.remove('selected');
+        }
+        navButton.classList.add('selected');
         showOptions(layerName);
     });
     categoryContainer.appendChild(navButton);
@@ -402,10 +359,6 @@ populateOptionGrid(accessoryHandOptions, accessoryHandLayer, 'accessories-hand')
 
 showOptions('torso');
 
-initializeCanvas();
-
-forceSize();
-
 function forceSize() {
     const canvas = document.getElementById('main-canvas-container');
     const drawer = document.getElementById('right-side-container')
@@ -415,6 +368,79 @@ function forceSize() {
         drawer.style.height = 'calc('+ (window.innerHeight - canvas.offsetHeight + 1 - 5) + 'px - 2em)';
     }
 }
+
+function initializeCanvas(){
+    const canvas = document.getElementById('main-canvas');
+    const ctx = canvas.getContext("2d");
+    canvas.width  = 600;
+    canvas.height = 600;
+    ctx.fillStyle = "#f0f8ff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function download(){
+    let canvasImage = document.getElementById('main-canvas').toDataURL('image/png');
+    // this can be used to download any image from webpage to local disk
+    let xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+        let a = document.createElement('a');
+        a.href = window.URL.createObjectURL(xhr.response);
+        a.download = 'dress_up_doll.png';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      };
+    xhr.open('GET', canvasImage); // This is to download the canvas Image
+    xhr.send();
+}
+
+function finalize(){
+    const popup = document.getElementById('pop-up-container');
+    popup.classList.remove('hide');
+    popup.classList.add('fade-in');
+}
+
+function close(){
+    console.log('closing')
+    const popup = document.getElementById('pop-up-container');
+    popup.classList.add('hide');
+    popup.classList.hide('fade-in');
+}
+
+function random(){
+    /**
+     * 
+     * @param {Part[]} options 
+     * @param {PartLayer} layer 
+     */
+    function filterAndSelect(options, layer){
+        const filtered = options.filter(x => (x.bodyStyle == currentBodyStyle || x.bodyStyle == bodyStyleAny));
+        const option = filtered[Math.floor(Math.random() * filtered.length)];
+        if(option){
+            selectOption(option, options, layer);
+        }
+    }
+
+    const torso = torsoOptions[Math.floor(Math.random() * torsoOptions.length)];
+    selectOption(torso, torsoOptions, torsoLayer);
+    filterAndSelect(armsOptions, armsLayer);
+    filterAndSelect(eyesOptions, eyesLayer);
+    filterAndSelect(eyebrowOptions, eyebrowLayer);
+    filterAndSelect(mouthOptions, mouthLayer);
+    filterAndSelect(hairFrontOptions, hairFrontLayer);
+    filterAndSelect(hairBackOptions, hairBackLayer);
+    filterAndSelect(hairExtraOptions, hairExtraLayer);
+    filterAndSelect(clothesInnerOptions, clothesInnerLayer);
+    filterAndSelect(clothesOuterOptions, clothesOuterLayer);
+    filterAndSelect(accessoryHairOptions, accessoryHairLayer);
+    filterAndSelect(accessoryHandOptions, accessoryHandLayer);
+}
   
 window.onresize = forceSize;
+initializeCanvas();
+forceSize();
+const popup = document.getElementById('pop-up-container');
+popup.addEventListener('click', close);
 // Debug Methods

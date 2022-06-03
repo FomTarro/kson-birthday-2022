@@ -11,7 +11,8 @@
 </head>
     <body>
         <div class='scrolling-bg'></div>
-        <main>
+        <main class="center-align">
+            <!-- <div class="row">happy birthday bossu</div> -->
             <div id='main-container'>
                 <div id="main-canvas-container" class="border-box row">
                     <div class="frame canvas-frame"></div>
@@ -56,7 +57,7 @@
                             <div class="frame misc-button-random-frame">
                             </div>
                         </button>
-                        <button  id='misc-button-generate' class="border-box misc-button center-align" onclick="download()">
+                        <button  id='misc-button-generate' class="border-box misc-button center-align" onclick="finalize()">
                             <img src="img/site-style/button2_t.png">
                             <div class="frame misc-button-generate-frame">
                             </div>
@@ -66,8 +67,15 @@
             </div>
             <!-- <div class='footer'>
             </div> -->
-            <div id="pop-up-container" class="hide">
-
+            <div id="pop-up-container" class="hide center-align">
+                <div id="pop-up-background" onclick="close()"></div>
+                <div id="pop-up-content-container" class="center-align border-box">
+                    <div class="frame pop-up-frame"></div>
+                    <div id="pop-up-inner-content-container">
+                        <img id="pop-up-photo" class="row">
+                    </div>
+                    wow...
+                </div>
             </div>
         </main>
     </body>
