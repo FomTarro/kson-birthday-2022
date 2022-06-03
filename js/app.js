@@ -125,6 +125,7 @@ function onPartChange(){
         for(let i = 0; i < filteredComponents.length; i++){
             ctx.drawImage(filteredComponents[i].img, filteredComponents[i].x, filteredComponents[i].y);
         }
+        document.getElementById('main-canvas-output').src = getPhotoURL();
     }
 
     for(let i = 0; i < filteredComponents.length; i++){
@@ -180,19 +181,97 @@ const bodyStyleAny = 'any';
 let currentBodyStyle = bodyStyleAny;
 
 const torsoOptions = [
-    new Part('basebody-chibi', [new PartComponent('./img/body/basebody_chibi.png')], bodyStyleChibi),
-    // new Part('basebody-real', [new PartComponent('./img/body/basebody_real_scale.png')], bodyStyleReal)
+    new Part('basebody-chibi', [new PartComponent('./img/body/chibi/basebody-chibi.png')], bodyStyleChibi),
+    new Part('basebody-real', [new PartComponent('./img/body/real/basebody-real.png')], bodyStyleReal),
+    new Part('basebody-real-abs', [new PartComponent('./img/body/real/basebody-real-abs.png')], bodyStyleReal)
 ]
 const armsOptions = [
     new Part('hand-gesture-KM', [new PartComponent('./img/arms/hand_gesture-KM.png')], bodyStyleChibi),
 ]
 const eyesOptions = [
-    new Part('eyes-AGS', [new PartComponent('./img/eyes/eyes-AGS.png')], bodyStyleChibi),
-    new Part('eyes-KM', [new PartComponent('./img/eyes/eyes-KM.png')], bodyStyleChibi)
+    new Part('eyes-AGS', [new PartComponent('./img/eyes/chibi/eyes-AGS.png')], bodyStyleChibi),
+    new Part('eyes-cheese- (1)', [new PartComponent('./img/eyes/chibi/eyes-cheese- (1).png')], bodyStyleChibi), // has mouth
+    new Part('eyes-cheese- (2)', [new PartComponent('./img/eyes/chibi/eyes-cheese- (2).png')], bodyStyleChibi),
+    new Part('eyes-GAKI- (1)', [new PartComponent('./img/eyes/chibi/eyes-GAKI- (1).png')], bodyStyleChibi),
+    new Part('eyes-GAKI- (2)', [new PartComponent('./img/eyes/chibi/eyes-GAKI- (2).png')], bodyStyleChibi),
+    new Part('eyes-GAKI- (3)', [new PartComponent('./img/eyes/chibi/eyes-GAKI- (3).png')], bodyStyleChibi),
+    new Part('eyes-ICGJ- (2)', [new PartComponent('./img/eyes/chibi/eyes-ICGJ- (2).png')], bodyStyleChibi),
+    new Part('eyes-ICGJ- (3)', [new PartComponent('./img/eyes/chibi/eyes-ICGJ- (3).png')], bodyStyleChibi),
+    new Part('eyes-KM', [new PartComponent('./img/eyes/chibi/eyes-KM.png')], bodyStyleChibi),
+    new Part('eyes-UTAH- (1)', [new PartComponent('./img/eyes/chibi/eyes-UTAH- (1).png')], bodyStyleChibi),
+    new Part('eyes-UTAH- (2)', [new PartComponent('./img/eyes/chibi/eyes-UTAH- (2).png')], bodyStyleChibi),
+    new Part('eyes-UTAH- (3)', [new PartComponent('./img/eyes/chibi/eyes-UTAH- (3).png')], bodyStyleChibi),
+    new Part('eyes-UTAH- (4)', [new PartComponent('./img/eyes/chibi/eyes-UTAH- (4).png')], bodyStyleChibi),
+    new Part('eyes-YUUTA', [new PartComponent('./img/eyes/chibi/eyes-YUUTA.png')], bodyStyleChibi),
+    new Part('eyes-sonemi', [new PartComponent('./img/eyes/chibi/eyes-sonemi.png')], bodyStyleChibi),
+    new Part('eyes-yu ya iyaui- (1)', [new PartComponent('./img/eyes/chibi/eyes-yu ya iyaui- (1).png')], bodyStyleChibi),
+    new Part('eyes-yu ya iyaui- (2)', [new PartComponent('./img/eyes/chibi/eyes-yu ya iyaui- (2).png')], bodyStyleChibi),
+    new Part('eyes-yu ya iyaui- (3)', [new PartComponent('./img/eyes/chibi/eyes-yu ya iyaui- (3).png')], bodyStyleChibi),
+    // real
+    new Part('eyes-BAN- (1)', [new PartComponent('./img/eyes/real/eyes-BAN.png')], bodyStyleReal),
+    new Part('eyes-AMAJC-_1', [new PartComponent('./img/eyes/real/eyes-AMAJC-_1.png')], bodyStyleReal),
+    new Part('eyes-AMAJC-_2', [new PartComponent('./img/eyes/real/eyes-AMAJC-_2.png')], bodyStyleReal),
+    new Part('eyes-E333- (1)', [new PartComponent('./img/eyes/real/eyes-E333- (1).png')], bodyStyleReal),
+    new Part('eyes-E333- (2)', [new PartComponent('./img/eyes/real/eyes-E333- (2).png')], bodyStyleReal),
+    new Part('eyes-E333- (3)', [new PartComponent('./img/eyes/real/eyes-E333- (3).png')], bodyStyleReal),
+    new Part('eyes-E333- (4)', [new PartComponent('./img/eyes/real/eyes-E333- (4).png')], bodyStyleReal),
+    new Part('eyes-ICGJ- (1)', [new PartComponent('./img/eyes/real/eyes-ICGJ- (1).png')], bodyStyleReal),
+    new Part('eyes-ISK', [new PartComponent('./img/eyes/real/eyes-ISK.png')], bodyStyleReal),
+    new Part('eyes-Kal_Illustration', [new PartComponent('./img/eyes/real/eyes-Kal_Illustration.png')], bodyStyleReal),
+    new Part('eyes-KIN- (1)', [new PartComponent('./img/eyes/real/eyes-KIN- (1).png')], bodyStyleReal),
+    new Part('eyes-KIN- (2)', [new PartComponent('./img/eyes/real/eyes-KIN- (2).png')], bodyStyleReal),
+    new Part('eyes-KIN- (3)', [new PartComponent('./img/eyes/real/eyes-KIN- (3).png')], bodyStyleReal),
+    new Part('eyes-KuQ- (1)', [new PartComponent('./img/eyes/real/eyes-KuQ- (1).png')], bodyStyleReal),
+    new Part('eyes-KuQ- (2)', [new PartComponent('./img/eyes/real/eyes-KuQ- (2).png')], bodyStyleReal),
+    new Part('eyes-KuQ- (3)', [new PartComponent('./img/eyes/real/eyes-KuQ- (3).png')], bodyStyleReal),
+    new Part('eyes-NYC', [new PartComponent('./img/eyes/real/eyes-NYC.png')], bodyStyleReal),
+    new Part('eyes-otto- (1)', [new PartComponent('./img/eyes/real/eyes-otto- (1).png')], bodyStyleReal),
+    new Part('eyes-otto- (2)', [new PartComponent('./img/eyes/real/eyes-otto- (2).png')], bodyStyleReal),
+    new Part('eyes-otto- (3)', [new PartComponent('./img/eyes/real/eyes-otto- (3).png')], bodyStyleReal),
+    new Part('eyes-otto- (4)', [new PartComponent('./img/eyes/real/eyes-otto- (4).png')], bodyStyleReal),
+    new Part('eyes-otto- (5)', [new PartComponent('./img/eyes/real/eyes-otto- (5).png')], bodyStyleReal),
+    new Part('eyes-otto- (6)', [new PartComponent('./img/eyes/real/eyes-otto- (6).png')], bodyStyleReal),
+    new Part('eyes-otto- (7)', [new PartComponent('./img/eyes/real/eyes-otto- (7).png')], bodyStyleReal),
+    new Part('eyes-otto- (8)', [new PartComponent('./img/eyes/real/eyes-otto- (8).png')], bodyStyleReal),
+    new Part('eyes-RIO- (1)', [new PartComponent('./img/eyes/real/eyes-RIO- (1).png')], bodyStyleReal),
+    new Part('eyes-RIO- (2)', [new PartComponent('./img/eyes/real/eyes-RIO- (2).png')], bodyStyleReal),
+    new Part('eyes-RIO- (6)', [new PartComponent('./img/eyes/real/eyes-RIO- (6).png')], bodyStyleReal),
+    new Part('eyes-RIO- (7)', [new PartComponent('./img/eyes/real/eyes-RIO- (7).png')], bodyStyleReal),
+    new Part('eyes-RIO- (8)', [new PartComponent('./img/eyes/real/eyes-RIO- (8).png')], bodyStyleReal),
+    new Part('eyes-RIO- (9)', [new PartComponent('./img/eyes/real/eyes-RIO- (9).png')], bodyStyleReal),
+    new Part('eyes-RIO- (10)', [new PartComponent('./img/eyes/real/eyes-RIO- (10).png')], bodyStyleReal),
+    new Part('eyes-RIO- (11)', [new PartComponent('./img/eyes/real/eyes-RIO- (11).png')], bodyStyleReal),
+    new Part('eyes-RIO- (12)', [new PartComponent('./img/eyes/real/eyes-RIO- (12).png')], bodyStyleReal),
+    new Part('eyes-RIO- (13)', [new PartComponent('./img/eyes/real/eyes-RIO- (13).png')], bodyStyleReal),
+    new Part('eyes-TNTR', [new PartComponent('./img/eyes/real/eyes-TNTR.png')], bodyStyleReal),
+    new Part('eyes-WATSON', [new PartComponent('./img/eyes/real/eyes-WATSON.png')], bodyStyleReal),
+    new Part('eyes-ui n gu- (1)', [new PartComponent('./img/eyes/real/eyes-ui n gu- (1).png')], bodyStyleReal),
+    new Part('eyes-ui n gu- (2)', [new PartComponent('./img/eyes/real/eyes-ui n gu- (2).png')], bodyStyleReal),
+    new Part('eyes-ui n gu- (3)', [new PartComponent('./img/eyes/real/eyes-ui n gu- (3).png')], bodyStyleReal),
+    new Part('eyes-ui n gu- (4)', [new PartComponent('./img/eyes/real/eyes-ui n gu- (4).png')], bodyStyleReal),
+    new Part('eyes-sumitsuki- (1)', [new PartComponent('./img/eyes/real/eyes-sumitsuki- (1).png')], bodyStyleReal),
+    new Part('eyes-sumitsuki- (2)', [new PartComponent('./img/eyes/real/eyes-sumitsuki- (2).png')], bodyStyleReal),
+    new Part('eyes-sumitsuki- (3)', [new PartComponent('./img/eyes/real/eyes-sumitsuki- (3).png')], bodyStyleReal),
+    new Part('eyes-sumitsuki- (4)', [new PartComponent('./img/eyes/real/eyes-sumitsuki- (4).png')], bodyStyleReal),
+    new Part('eyes-sumitsuki- (5)', [new PartComponent('./img/eyes/real/eyes-sumitsuki- (5).png')], bodyStyleReal),
+    new Part('eyes-sumitsuki- (6)', [new PartComponent('./img/eyes/real/eyes-sumitsuki- (6).png')], bodyStyleReal),
+    new Part('eyes-sumitsuki- (7)', [new PartComponent('./img/eyes/real/eyes-sumitsuki- (7).png')], bodyStyleReal),
 ]
 const eyebrowOptions = [
-    new Part('eyebrow-AGS', [new PartComponent('./img/eyebrows/eyebrows-AGS.png')], bodyStyleChibi),
-    new Part('eyebrow-KM', [new PartComponent('./img/eyebrows/eyebrows-KM.png')], bodyStyleChibi),
+    new Part('eyebrows_UTAH- (1)', [new PartComponent('./img/eyebrows/chibi/eyebrows_UTAH- (1).png')], bodyStyleChibi),
+    new Part('eyebrows_UTAH- (2)', [new PartComponent('./img/eyebrows/chibi/eyebrows_UTAH- (2).png')], bodyStyleChibi),
+    new Part('eyebrows-AGS', [new PartComponent('./img/eyebrows/chibi/eyebrows-AGS.png')], bodyStyleChibi),
+    new Part('eyebrows-cheese', [new PartComponent('./img/eyebrows/chibi/eyebrows-cheese.png')], bodyStyleChibi),
+    new Part('eyebrows-GYSTN', [new PartComponent('./img/eyebrows/chibi/eyebrows-GYSTN.png')], bodyStyleChibi),
+    new Part('eyebrows-ICGJ', [new PartComponent('./img/eyebrows/chibi/eyebrows-ICGJ.png')], bodyStyleChibi),
+    new Part('eyebrows-KM', [new PartComponent('./img/eyebrows/chibi/eyebrows-KM.png')], bodyStyleChibi),
+    new Part('eyebrows-sonemi', [new PartComponent('./img/eyebrows/chibi/eyebrows-sonemi.png')], bodyStyleChibi),
+    new Part('eyebrows-yu ya iyaui- (1)', [new PartComponent('./img/eyebrows/chibi/eyebrows-yu ya iyaui- (1).png')], bodyStyleChibi),
+    new Part('eyebrows-yu ya iyaui- (2)', [new PartComponent('./img/eyebrows/chibi/eyebrows-yu ya iyaui- (2).png')], bodyStyleChibi),
+    new Part('eyebrows-yu ya iyaui- (3)', [new PartComponent('./img/eyebrows/chibi/eyebrows-yu ya iyaui- (3).png')], bodyStyleChibi),
+    new Part('eyebrows-yu ya iyaui- (4)', [new PartComponent('./img/eyebrows/chibi/eyebrows-yu ya iyaui- (4).png')], bodyStyleChibi),
+    new Part('eyebrows-yu ya iyaui- (5)', [new PartComponent('./img/eyebrows/chibi/eyebrows-yu ya iyaui- (5).png')], bodyStyleChibi),
+    new Part('eyebrows-yu ya iyaui- (6)', [new PartComponent('./img/eyebrows/chibi/eyebrows-yu ya iyaui- (6).png')], bodyStyleChibi),
 ]
 const mouthOptions = [
     new Part('mouth-AGS', [new PartComponent('./img/mouth/mouth-AGS.png')], bodyStyleChibi),
@@ -290,7 +369,7 @@ function populateOptionGrid(options, layer, layerName){
     container.classList.add('center-align', 'option-container', 'grid-box');
     container.id = layerName;
     for(let i = 0; i < options.length; i++){
-        for(let f = 0; f < 12; f++){
+        for(let f = 0; f < 1; f++){
             const button = document.createElement('button');
 
             const option = options[i];
@@ -372,8 +451,8 @@ function forceSize() {
 function initializeCanvas(){
     const canvas = document.getElementById('main-canvas');
     const ctx = canvas.getContext("2d");
-    canvas.width  = 600;
-    canvas.height = 600;
+    canvas.width  = 1200;
+    canvas.height = 1200;
     ctx.fillStyle = "#f0f8ff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
