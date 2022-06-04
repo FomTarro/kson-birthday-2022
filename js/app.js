@@ -458,9 +458,6 @@ const hairExtraOptions = [
 ]
 const clothesInnerOptions = [
     // new Part('inner-layer-clothing-AGS', [new PartComponent('./img/outfit/inner_layer_clothing-AGS.png')], bodyStyleChibi),
-    // new Part('inner-layer-clothing-KM', [new PartComponent('./img/outfit/inner_layer_clothing-KM.png')], bodyStyleChibi),
-    // new Part('inner-layer-clothing-BAN', [new PartComponent('./img/outfit/inner_layer_clothing-BAN.png')], bodyStyleChibi),
-    // new Part('inner-layer-clothing-ICGJ', [new PartComponent('./img/outfit/inner_layer_clothing-ICGJ.png')], bodyStyleReal)
 ]
 const clothesOuterOptions = [
     // new Part('outer-layer-clothing-none', [new PartComponent('./img/none.png')], bodyStyleAny),
