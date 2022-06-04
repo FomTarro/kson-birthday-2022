@@ -457,14 +457,29 @@ body {
   transform: scale(5);
 }
 
+.mouth.real > .option-icon {
+  top: 50%;
+  transform: scale(5);
+}
+
 .eyes > .option-icon {
   top: 20%;
   transform: scale(2);
 }
 
+.eyes.real > .option-icon {
+  top: 70%;
+  transform: scale(4);
+}
+
 .eyebrows > .option-icon {
-  top: 20%;
-  transform: scale(2);
+  top: 45%;
+  transform: scale(3);
+}
+
+.eyebrows.real > .option-icon {
+  top: 100%;
+  transform: scale(5);
 }
 
 .hair-front > .option-icon {
