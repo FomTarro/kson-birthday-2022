@@ -147,7 +147,7 @@ function onPartChange(){
 }
 
 const torsoLayer = new PartLayer(0);
-const armsLayer = new PartLayer(-100);
+const armsLayer = new PartLayer(50);
 const eyesLayer = new PartLayer(200);
 const eyebrowLayer = new PartLayer(300);
 const mouthLayer = new PartLayer(100);
@@ -186,7 +186,36 @@ const torsoOptions = [
     new Part('basebody-real-abs', [new PartComponent('./img/body/real/basebody-real-abs.png')], bodyStyleReal)
 ]
 const armsOptions = [
-    // new Part('hand-gesture-KM', [new PartComponent('./img/arms/hand_gesture-KM.png')], bodyStyleChibi),
+    new Part('55. hand_gesture-yu ya iyaui', [new PartComponent('./img/arms/chibi/207. hand_gesture-yu ya iyaui 1of2.png'),
+                                              new PartComponent('./img/arms/chibi/55. hand_gesture-yu ya iyaui 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('58. hand_gesture-VOLDOX- (2)', [new PartComponent('./img/arms/chibi/58. hand_gesture-VOLDOX- (2).png', clothesOuterLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('59. hand_gesture-VOLDOX- (1)', [new PartComponent('./img/arms/chibi/59. hand_gesture-VOLDOX- (1).png', clothesOuterLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('209. hand_gesture-UTAH- (7)', [new PartComponent('./img/arms/chibi/209. hand_gesture-UTAH- (7) 1of2.png'),
+                                              new PartComponent('./img/arms/chibi/60. hand_gesture-UTAH- (7) 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('61. hand_gesture-UTAH- (6)', [new PartComponent('./img/arms/chibi/210. hand_gesture-UTAH- (6) 1of2.png'),
+                                            new PartComponent('./img/arms/chibi/61. hand_gesture-UTAH- (6) 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('62. hand_gesture-UTAH- (5)', [new PartComponent('./img/arms/chibi/211. hand_gesture-UTAH- (5) 1of2.png'),
+                                            new PartComponent('./img/arms/chibi/62. hand_gesture-UTAH- (5) 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('63. hand_gesture-UTAH- (3)', [new PartComponent('./img/arms/chibi/213. hand_gesture-UTAH- (3) 1of2.png'),
+                                            new PartComponent('./img/arms/chibi/63. hand_gesture-UTAH- (3) 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('218. hand_gesture-AGS', [new PartComponent('./img/arms/chibi/218. hand_gesture-AGS 1of2.png'),
+                                       new PartComponent('./img/arms/chibi/82. hand_gesture-AGS 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('219. hand_geseture-cheese- (5)', [new PartComponent('./img/arms/chibi/219. hand_geseture-cheese- (5) 1of2.png'),
+                                                new PartComponent('./img/arms/chibi/83. hand_geseture-cheese- (5) 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('220. hand_geseture-cheese- (4)', [new PartComponent('./img/arms/chibi/220. hand_geseture-cheese- (4) 1of2.png'),
+                                                new PartComponent('./img/arms/chibi/84. hand_geseture-cheese- (4) 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('221. hand_geseture-cheese- (3)', [new PartComponent('./img/arms/chibi/221. hand_geseture-cheese- (3) 1of2.png'),
+                                                new PartComponent('./img/arms/chibi/85. hand_geseture-cheese- (3) 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
+    new Part('208. hand_gesture-UTAH- (8)', [new PartComponent('./img/arms/chibi/208. hand_gesture-UTAH- (8).png')], bodyStyleChibi),
+    new Part('212. hand_gesture-UTAH- (4)', [new PartComponent('./img/arms/chibi/212. hand_gesture-UTAH- (4).png')], bodyStyleChibi),
+    new Part('214. hand_gesture-UTAH- (2)', [new PartComponent('./img/arms/chibi/214. hand_gesture-UTAH- (2).png')], bodyStyleChibi),
+    new Part('215. hand_gesture-UTAH- (1)', [new PartComponent('./img/arms/chibi/215. hand_gesture-UTAH- (1).png')], bodyStyleChibi),
+    new Part('216. hand_gesture-Kukie', [new PartComponent('./img/arms/chibi/216. hand_gesture-Kukie.png')], bodyStyleChibi), // use as default
+    new Part('222. hand_geseture-cheese- (2)', [new PartComponent('./img/arms/chibi/222. hand_geseture-cheese- (2).png')], bodyStyleChibi),
+    new Part('223. hand_geseture-cheese- (1)', [new PartComponent('./img/arms/chibi/223. hand_geseture-cheese- (1).png')], bodyStyleChibi),
+    // real
+    new Part('56. hand_gesture-ui n gu', [new PartComponent('./img/arms/real/56. hand_gesture-ui n gu.png')], bodyStyleReal),
+    new Part('272. hand_gesture-TNTR behind body', [new PartComponent('./img/arms/real/272. hand_gesture-TNTR behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
 ]
 const eyesOptions = [
     new Part('eyes-AGS', [new PartComponent('./img/eyes/chibi/eyes-AGS.png')], bodyStyleChibi),
@@ -458,14 +487,14 @@ const hairExtraOptions = [
 ]
 const clothesInnerOptions = [
     new Part('127. inner_layer_clothing-yu ya iyaui', [new PartComponent('./img/clothes-inner/chibi/127. inner_layer_clothing-yu ya iyaui.png')], bodyStyleChibi),
-    new Part('129. inner_layer_clothing-itsuku', [new PartComponent('./img/clothes-inner/chibi/129. inner_layer_clothing-itsuku.png')], bodyStyleChibi),
+    new Part('129. inner_layer_clothing-itsuku', [new PartComponent('./img/clothes-inner/chibi/129. inner_layer_clothing-itsuku.png', undefined, [armsLayer])], bodyStyleChibi),
     new Part('130. inner_layer_clothing-YUUTA- (3)', [new PartComponent('./img/clothes-inner/chibi/130. inner_layer_clothing-YUUTA- (3).png')], bodyStyleChibi),
     new Part('131. inner_layer_clothing-YUUTA- (2)', [new PartComponent('./img/clothes-inner/chibi/131. inner_layer_clothing-YUUTA- (2).png')], bodyStyleChibi),
     new Part('132. inner_layer_clothing-VOLDOX', [new PartComponent('./img/clothes-inner/chibi/132. inner_layer_clothing-VOLDOX.png')], bodyStyleChibi),
     new Part('133. inner_layer_clothing-UTAH- (10)', [new PartComponent('./img/clothes-inner/chibi/133. inner_layer_clothing-UTAH- (10).png')], bodyStyleChibi),
     new Part('134. inner_layer_clothing-UTAH- (3)', [new PartComponent('./img/clothes-inner/chibi/134. inner_layer_clothing-UTAH- (3).png')], bodyStyleChibi),
     new Part('135. inner_layer_clothing-UTAH- (1)', [new PartComponent('./img/clothes-inner/chibi/135. inner_layer_clothing-UTAH- (1).png')], bodyStyleChibi),
-    new Part('145. inner_layer_clothing-Kukie', [new PartComponent('./img/clothes-inner/chibi/145. inner_layer_clothing-Kukie.png')], bodyStyleChibi),
+    new Part('145. inner_layer_clothing-Kukie', [new PartComponent('./img/clothes-inner/chibi/145. inner_layer_clothing-Kukie.png', undefined, [armsLayer])], bodyStyleChibi),
     new Part('163. inner_layer_clothing-CAPTAINAMD- (2)', [new PartComponent('./img/clothes-inner/chibi/163. inner_layer_clothing-CAPTAINAMD- (2).png')], bodyStyleChibi),
     new Part('165. inner_layer_clothing-AGS', [new PartComponent('./img/clothes-inner/chibi/165. inner_layer_clothing-AGS.png')], bodyStyleChibi),
     new Part('167. inner_layer_clothing-ICGJ- (2)', [new PartComponent('./img/clothes-inner/chibi/167. inner_layer_clothing-ICGJ- (2).png')], bodyStyleChibi),
