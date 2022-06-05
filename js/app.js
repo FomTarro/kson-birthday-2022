@@ -162,8 +162,16 @@ const accessoryHairLayer = new PartLayer(700);
 const accessoryFaceLayer = new PartLayer(550);
 const accessoryBodyLayer = new PartLayer(540);
 
-function resetDefaults(){
-    torsoLayer.setComponents([]);
+/**
+ * 
+ * @param {boolean} resetBody 
+ */
+function resetDefaults(resetBody){
+    if(resetBody == true){
+        currentBodyStyle = bodyStyleAny;
+        setCategoryStatus(false);
+        torsoLayer.setComponents([]);
+    }
     armsLayer.setComponents([]);
     eyesLayer.setComponents([]);
     mouthLayer.setComponents([]);
@@ -801,7 +809,7 @@ const accessoryBodyOptions = [
  */
 function setBodyStyle(newBodyStyle){
     if(currentBodyStyle != newBodyStyle){
-        resetDefaults();
+        resetDefaults(true);
         if(newBodyStyle == bodyStyleChibi){
             const armOption = armsOptions.find(x => x.id == '216. hand_gesture-Kukie');
             selectOption(armOption, armsOptions, armsLayer);
@@ -816,6 +824,7 @@ function setBodyStyle(newBodyStyle){
         }
     }
     currentBodyStyle = newBodyStyle;
+    setCategoryStatus(true);
     const allOptions = document.getElementsByClassName('option-button');
     for(let k = 0; k < allOptions.length; k++){
         if(allOptions[k].classList.contains(newBodyStyle) || allOptions[k].classList.contains(bodyStyleAny)){
@@ -927,6 +936,21 @@ function populateOptionGrid(options, layer, layerName, iconPartId){
         }
     }
     categoryContainer.appendChild(navButton);
+}
+
+function setCategoryStatus(status){
+    const categoryButtons = document.getElementsByClassName('category-button')
+    for(let d = 0; d < categoryButtons.length; d++){
+        if(!categoryButtons[d].classList.contains('torso')){
+            if(status == false){
+                categoryButtons[d].disabled = true;
+                categoryButtons[d].classList.add('button-disabled');
+            }else{
+                categoryButtons[d].disabled = false;
+                categoryButtons[d].classList.remove('button-disabled');
+            }
+        }
+    }
 }
 
 /**
@@ -1075,8 +1099,13 @@ function random(){
         }
     }
 
-    // const torso = torsoOptions[Math.floor(Math.random() * torsoOptions.length)];
-    // selectOption(torso, torsoOptions, torsoLayer);
+    if(currentBodyStyle == bodyStyleAny){
+        resetDefaults(true);
+        const torso = torsoOptions[Math.floor(Math.random() * torsoOptions.length)];
+        selectOption(torso, torsoOptions, torsoLayer);
+    }else{
+        resetDefaults(false);
+    }
     filterAndSelect(armsOptions, armsLayer);
     filterAndSelect(eyesOptions, eyesLayer);
     filterAndSelect(eyebrowOptions, eyebrowLayer);
@@ -1098,5 +1127,6 @@ initializeCanvas();
 initializeCategories();
 initializePopup();
 forceSize();
+resetDefaults(true);
 
 // Debug Methods

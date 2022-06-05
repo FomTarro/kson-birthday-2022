@@ -300,6 +300,7 @@ body {
 }
 
 #misc-button-credits{
+  height: 100%;
   position: relative;
   background-image: url('../img/site-style/button5_bg.png');
 }
@@ -547,6 +548,11 @@ body {
 
 .no-wrap {
   flex-wrap: nowrap;
+}
+
+.button-disabled{
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .button-arrow-up{
