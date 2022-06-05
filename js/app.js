@@ -860,21 +860,6 @@ function showOptions(layerName){
     thisOptionContainer.classList.remove('hide');
 }
 
-populateOptionGrid(torsoOptions, torsoLayer, 'torso', 'basebody-chibi');
-populateOptionGrid(armsOptions, armsLayer, 'arms', '216. hand_gesture-Kukie');
-populateOptionGrid(eyesOptions, eyesLayer, 'eyes', 'eyes-AGS');
-populateOptionGrid(eyebrowOptions, eyebrowLayer, 'eyebrows', 'eyebrows_UTAH- (1)');
-populateOptionGrid(mouthOptions, mouthLayer, 'mouth', 'mouth-AGS');
-populateOptionGrid(hairFrontOptions, hairFrontLayer, 'hair-front', 'hair_style-cheese- (2)');
-populateOptionGrid(hairBackOptions, hairBackLayer, 'hair-back', 'back_hair-UTAH- (3)');
-populateOptionGrid(hairExtraOptions, hairExtraLayer, 'hair-extra', '');
-populateOptionGrid(clothesInnerOptions, clothesInnerLayer, 'clothes-inner', '165. inner_layer_clothing-AGS');
-populateOptionGrid(clothesOuterOptions, clothesOuterLayer, 'clothes-outer', '93. outer_layer_clothing-UTAH');
-populateOptionGrid(accessoryHairOptions, accessoryHairLayer, 'accessories-hair', '42. hair_ornament-KM- (8)');
-populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer, 'accessories-face', '228. glasses-AGS');
-
-showOptions('torso');
-
 function forceSize() {
     const canvas = document.getElementById('main-canvas-container');
     const drawer = document.getElementById('right-side-container')
@@ -892,6 +877,51 @@ function initializeCanvas(){
     canvas.height = 900;
     ctx.fillStyle = "#f0f8ff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function initializeCategories(){
+    let timeoutId;
+    const scrollDown = function() {
+        document.getElementById('category-inner-container').scrollTop += 5;
+        document.getElementById('category-inner-inner-container').scrollLeft += 5;
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(scrollDown, 10);
+    }
+    const scrollUp = function() {
+        document.getElementById('category-inner-container').scrollTop -= 5;
+        document.getElementById('category-inner-inner-container').scrollLeft -= 5;
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(scrollUp, 10);
+    }
+
+    document.getElementById('button-category-scroll-bottom').addEventListener('pointerdown', function(){
+        timeoutId = setTimeout(scrollDown, 10);
+    })
+    document.getElementById('button-category-scroll-bottom').addEventListener('pointerup', function(){
+        clearTimeout(timeoutId);
+    })
+
+    document.getElementById('button-category-scroll-top').addEventListener('pointerdown', function(){
+        timeoutId = setTimeout(scrollUp, 10);
+    })
+    document.getElementById('button-category-scroll-top').addEventListener('pointerup', function(){
+        clearTimeout(timeoutId);
+    })
+
+    populateOptionGrid(torsoOptions, torsoLayer, 'torso', 'basebody-chibi');
+    populateOptionGrid(armsOptions, armsLayer, 'arms', '216. hand_gesture-Kukie');
+    populateOptionGrid(eyesOptions, eyesLayer, 'eyes', 'eyes-AGS');
+    populateOptionGrid(eyebrowOptions, eyebrowLayer, 'eyebrows', 'eyebrows_UTAH- (1)');
+    populateOptionGrid(mouthOptions, mouthLayer, 'mouth', 'mouth-AGS');
+    populateOptionGrid(hairFrontOptions, hairFrontLayer, 'hair-front', 'hair_style-cheese- (2)');
+    populateOptionGrid(hairBackOptions, hairBackLayer, 'hair-back', 'back_hair-UTAH- (3)');
+    populateOptionGrid(hairExtraOptions, hairExtraLayer, 'hair-extra', '');
+    populateOptionGrid(clothesInnerOptions, clothesInnerLayer, 'clothes-inner', '165. inner_layer_clothing-AGS');
+    populateOptionGrid(clothesOuterOptions, clothesOuterLayer, 'clothes-outer', '93. outer_layer_clothing-UTAH');
+    populateOptionGrid(accessoryHairOptions, accessoryHairLayer, 'accessories-hair', '42. hair_ornament-KM- (8)');
+    populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer, 'accessories-face', '228. glasses-AGS');
+    
+    showOptions('torso');
 }
 
 function getPhotoURL(){
@@ -974,10 +1004,12 @@ function random(){
     filterAndSelect(clothesOuterOptions, clothesOuterLayer);
     filterAndSelect(accessoryHairOptions, accessoryHairLayer);
     filterAndSelect(accessoryFaceOptions, accessoryFaceLayer);
+    console.log('-------------')
 }
   
 window.onresize = forceSize;
 initializeCanvas();
+initializeCategories();
 initializePopup();
 forceSize();
 

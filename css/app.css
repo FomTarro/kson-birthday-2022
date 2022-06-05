@@ -333,14 +333,8 @@ body {
 }
 
 #category-inner-container{
-  /* display: grid;
-  height: auto;
-  overflow-x: auto;
-  overflow-y: auto;
-  white-space: nowrap;
-  gap: 10px; */
   width: 100%;
-  height: 100%;
+  height: calc(100% - 96px);
   overflow-y: scroll;
   overflow-x: scroll;
 }
@@ -535,7 +529,16 @@ body {
   flex-wrap: nowrap;
 }
 
-.button-arrow{
+.button-arrow-up{
+  top: 0;
+  position: absolute;
+  width: 100%;
+  transform: rotate(180deg);
+}
+
+.button-arrow-down{
+  bottom: 0;
+  position: absolute;
   width: 100%;
 }
 
@@ -639,6 +642,9 @@ body {
   }
 
   #category-inner-container{
+
+    height: 100%;
+    width: calc(100% - 96px);
     overflow-x: scroll;
     overflow-y: hidden;
   }
@@ -659,6 +665,22 @@ body {
   .category-button{
     min-width: 6vh;
     margin: 0;
+  }
+
+  .button-arrow-up{
+    top: auto;
+    left: 0;
+    position: absolute;
+    width: auto;
+    transform: rotate(90deg);
+  }
+  
+  .button-arrow-down{
+    bottom: auto;
+    right: 0;
+    position: absolute;
+    width: auto;
+    transform: rotate(-90deg);
   }
 
 }
