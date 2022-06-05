@@ -123,9 +123,8 @@ function onPartChange(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         count = filteredComponents.length;
         for(let i = 0; i < filteredComponents.length; i++){
-            ctx.drawImage(filteredComponents[i].img, filteredComponents[i].x, filteredComponents[i].y);
+            ctx.drawImage(filteredComponents[i].img, filteredComponents[i].x, filteredComponents[i].y, 900, 900);
         }
-        document.getElementById('main-canvas-output').src = getPhotoURL();
     }
 
     for(let i = 0; i < filteredComponents.length; i++){
@@ -215,37 +214,26 @@ const armsOptions = [
     new Part('223. hand_geseture-cheese- (1)', [new PartComponent('./img/arms/chibi/223. hand_geseture-cheese- (1).png')], bodyStyleChibi),
     // real
     new Part('56. hand_gesture-ui n gu', [new PartComponent('./img/arms/real/56. hand_gesture-ui n gu.png')], bodyStyleReal),
-
     new Part('57. hand_gesture-zawa 2of2', [new PartComponent('./img/arms/real/271. hand_gesture-zawa 1of2 behind body.png', torsoLayer.baseSorting - 1),
                                             new PartComponent('./img/arms/real/57. hand_gesture-zawa 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleReal),
-
     new Part('64. hand_gesture-senriso_riki', [new PartComponent('./img/arms/real/64. hand_gesture-senriso_riki- 1of2.png', hairFrontLayer.baseSorting + 100),
                                                new PartComponent('./img/arms/real/273. hand_gesture-senriso_riki- 2of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
-
     new Part('65. hand_gesture-otto- (6)', [new PartComponent('./img/arms/real/65. hand_gesture-otto- (6) 2of2.png', hairFrontLayer.baseSorting + 100),
                                             new PartComponent('./img/arms/real/274. hand_gesture-otto- (6) 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
-
     new Part('66. hand_gesture-otto- (5) 2of2', [new PartComponent('./img/arms/real/66. hand_gesture-otto- (5) 2of2.png', hairFrontLayer.baseSorting + 100),
                                                  new PartComponent('./img/arms/real/275. hand_gesture-otto- (5) 1of2.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
-
     new Part('67. hand_gesture-otto- (1) 2of2', [new PartComponent('./img/arms/real/67. hand_gesture-otto- (1) 2of2.png', hairFrontLayer.baseSorting + 100),
                                                  new PartComponent('./img/arms/real/279. hand_gesture-otto- (1) 1of2.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
-
     new Part('68. hand_gesture-NYC- 2of2', [new PartComponent('./img/arms/real/68. hand_gesture-NYC- 2of2.png', hairFrontLayer.baseSorting + 100),
                                             new PartComponent('./img/arms/real/280. hand_gesture-NYC- 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal), // These go with her outfit
-
     new Part('69. hand_gesture-KPK- 2of2', [new PartComponent('./img/arms/real/69. hand_gesture-KPK- 2of2.png', hairFrontLayer.baseSorting + 100),
                                             new PartComponent('./img/arms/real/281. hand_gesture-KPK- 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
-
     new Part('79. hand_gesture-Kak_Illustration 2of2', [new PartComponent('./img/arms/real/79. hand_gesture-Kak_Illustration 2of2.png', hairFrontLayer.baseSorting + 100),
                                                         new PartComponent('./img/arms/real/282. hand_gesture-Kak_Illustration 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
-
     new Part('80. hand_gesture-DOKU- (1) 2of2', [new PartComponent('./img/arms/real/80. hand_gesture-DOKU- (1) 2of2.png', hairFrontLayer.baseSorting + 100),
                                                  new PartComponent('./img/arms/real/284. hand_gesture-DOKU- (1) 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
-
     new Part('81. hand_gesture-CAPTAINAMD- (1) 2of2.png', [new PartComponent('./img/arms/real/285. hand_gesture-CAPTAINAMD- (1) 1of2.png', torsoLayer.baseSorting - 1),
                                                            new PartComponent('./img/arms/real/81. hand_gesture-CAPTAINAMD- (1) 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleReal),
-
     new Part('272. hand_gesture-TNTR behind body', [new PartComponent('./img/arms/real/272. hand_gesture-TNTR behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
     new Part('269. hand_gesture-sumitsuki- (2) behind body', [new PartComponent('./img/arms/real/269. hand_gesture-sumitsuki- (2) behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
     new Part('276. hand_gesture-otto- (4)', [new PartComponent('./img/arms/real/276. hand_gesture-otto- (4).png', torsoLayer.baseSorting - 1)], bodyStyleReal),
@@ -548,8 +536,6 @@ const clothesInnerOptions = [
     new Part('199. inner_layer_clothing-KM- (1)', [new PartComponent('./img/clothes-inner/chibi/199. inner_layer_clothing-KM- (1).png')], bodyStyleChibi), // use as default
     new Part('203. inner_layer_clothing-BAN', [new PartComponent('./img/clothes-inner/chibi/203. inner_layer_clothing-BAN.png')], bodyStyleChibi),
     // real
-    new Part('122. outer_layer_clothing-ZAWA', [new PartComponent('./img/clothes-inner/real/122. outer_layer_clothing-ZAWA.png', undefined, [armsLayer])], bodyStyleReal),
-    new Part('123. outer_layer_clothing-NYC', [new PartComponent('./img/clothes-inner/real/123. outer_layer_clothing-NYC.png', undefined, [armsLayer])], bodyStyleReal), // REQUIRES SPECIFIC ARMS
     new Part('124. outer_later_clothing-TNTR', [new PartComponent('./img/clothes-inner/real/124. outer_later_clothing-TNTR.png')], bodyStyleReal),
     new Part('125. inner_layer_outfit-matiasja- (2)', [new PartComponent('./img/clothes-inner/real/125. inner_layer_outfit-matiasja- (2).png')], bodyStyleReal),
     new Part('126. inner_layer_clothing-sumitsuki', [new PartComponent('./img/clothes-inner/real/126. inner_layer_clothing-sumitsuki.png')], bodyStyleReal), // use as default
@@ -561,37 +547,10 @@ const clothesInnerOptions = [
     new Part('140. inner_layer_clothing-otto- (8)', [new PartComponent('./img/clothes-inner/real/140. inner_layer_clothing-otto- (8).png')], bodyStyleReal),
     new Part('141. inner_layer_clothing-otto- (4)', [new PartComponent('./img/clothes-inner/real/141. inner_layer_clothing-otto- (4).png')], bodyStyleReal),
     new Part('142. inner_layer_clothing-maru_ccy- (2)', [new PartComponent('./img/clothes-inner/real/142. inner_layer_clothing-maru_ccy- (2).png')], bodyStyleReal),
-    new Part('143. inner_layer_clothing-maru_ccy- (1)', [new PartComponent('./img/clothes-inner/real/143. inner_layer_clothing-maru_ccy- (1).png', undefined, [armsLayer])], bodyStyleReal), // REQUIRES SPECIFIC ARMS
     new Part('144. inner_layer_clothing-KuQ- (2)', [new PartComponent('./img/clothes-inner/real/144. inner_layer_clothing-KuQ- (2).png')], bodyStyleReal),
-    new Part('146. inner_layer_clothing-KIN- (12)', [new PartComponent('./img/clothes-inner/real/146. inner_layer_clothing-KIN- (12).png', undefined, [armsLayer])], bodyStyleReal),
-    new Part('147. inner_layer_clothing-KIN- (11) use body-2', [new PartComponent('./img/clothes-inner/real/147. inner_layer_clothing-KIN- (11) use body-2.png', undefined, [armsLayer, torsoLayer]),
-                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal),
-    new Part('148. inner_layer_clothing-KIN- (10) use body-2', [new PartComponent('./img/clothes-inner/real/148. inner_layer_clothing-KIN- (10) use body-2.png', undefined, [armsLayer, torsoLayer]),
-                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal),
-    new Part('149. inner_layer_clothing-KIN- (9) use body-2', [new PartComponent('./img/clothes-inner/real/149. inner_layer_clothing-KIN- (9) use body-2.png', undefined, [armsLayer, torsoLayer]),
-                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal),
-    new Part('150. inner_layer_clothing-KIN- (8) use body-2', [new PartComponent('./img/clothes-inner/real/150. inner_layer_clothing-KIN- (8) use body-2.png', undefined, [armsLayer, torsoLayer]),
-                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal),
-    new Part('151. inner_layer_clothing-KIN- (7) use body-2', [new PartComponent('./img/clothes-inner/real/151. inner_layer_clothing-KIN- (7) use body-2.png', undefined, [armsLayer, torsoLayer]),
-                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal), 
-    new Part('152. inner_layer_clothing-KIN- (6) use body-2', [new PartComponent('./img/clothes-inner/real/152. inner_layer_clothing-KIN- (6) use body-2.png', undefined, [armsLayer, torsoLayer]),
-                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal), 
-    new Part('153. inner_layer_clothing-KIN- (5) use body-2', [new PartComponent('./img/clothes-inner/real/153. inner_layer_clothing-KIN- (5) use body-2.png', undefined, [armsLayer, torsoLayer]),
-                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal), 
-    new Part('154. inner_layer_clothing-KIN- (3)', [new PartComponent('./img/clothes-inner/real/154. inner_layer_clothing-KIN- (3).png', undefined, [armsLayer, torsoLayer]),
-                                                    new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal), 
-    new Part('155. inner_layer_clothing-KIN- (2)', [new PartComponent('./img/clothes-inner/real/155. inner_layer_clothing-KIN- (2).png', undefined, [armsLayer, torsoLayer]),
-                                                    new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal),   
-    new Part('156. inner_layer_clothing-KIN- (1) use body-2', [new PartComponent('./img/clothes-inner/real/156. inner_layer_clothing-KIN- (1) use body-2.png', undefined, [armsLayer, torsoLayer]),
-                                                    new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal),   
-    new Part('157. inner_layer_clothing-Kal_Illustration- (3)', [new PartComponent('./img/clothes-inner/real/157. inner_layer_clothing-Kal_Illustration- (3).png')], bodyStyleReal),   
-    new Part('158. inner_layer_clothing-GRNFRG- (2)', [new PartComponent('./img/clothes-inner/real/158. inner_layer_clothing-GRNFRG- (2).png', undefined, [armsLayer])], bodyStyleReal),    
-    new Part('159. inner_layer_clothing-GRNFRG- (1)', [new PartComponent('./img/clothes-inner/real/159. inner_layer_clothing-GRNFRG- (1).png', undefined, [armsLayer])], bodyStyleReal),     
+    new Part('157. inner_layer_clothing-Kal_Illustration- (3)', [new PartComponent('./img/clothes-inner/real/157. inner_layer_clothing-Kal_Illustration- (3).png')], bodyStyleReal),       
     new Part('160. inner_layer_clothing-E333- (1)', [new PartComponent('./img/clothes-inner/real/160. inner_layer_clothing-E333- (1).png')], bodyStyleReal), // Is this too naked?          
     new Part('161. inner_layer_clothing-DOKU', [new PartComponent('./img/clothes-inner/real/161. inner_layer_clothing-DOKU.png')], bodyStyleReal),            
-    new Part('162. inner_layer_clothing-CAPTAINAMD- (1)', [new PartComponent('./img/clothes-inner/real/162. inner_layer_clothing-CAPTAINAMD- (1).png', undefined, [armsLayer]),
-                                                           new PartComponent('./img/arms/real/285. hand_gesture-CAPTAINAMD- (1) 1of2.png', torsoLayer.baseSorting - 1),
-                                                           new PartComponent('./img/arms/real/81. hand_gesture-CAPTAINAMD- (1) 2of2.png', clothesOuterLayer.baseSorting + 1)], bodyStyleReal), // Requires... something
     new Part('164. inner_layer_clothing-BAN-2', [new PartComponent('./img/clothes-inner/real/164. inner_layer_clothing-BAN-2.png')], bodyStyleReal),        
     new Part('166. inner_layer_clothing-GYSTN (2)', [new PartComponent('./img/clothes-inner/real/166. inner_layer_clothing-GYSTN (2).png')], bodyStyleReal),               
     new Part('168. inner_layer_clothing-otto- (3)', [new PartComponent('./img/clothes-inner/real/168. inner_layer_clothing-otto- (3).png')], bodyStyleReal),   
@@ -620,8 +579,6 @@ const clothesInnerOptions = [
     new Part('204. inner_layer_clothing-E333- (4)', [new PartComponent('./img/clothes-inner/real/204. inner_layer_clothing-E333- (4).png')], bodyStyleReal),
     new Part('205. inner_layer_clothing-E333- (3)', [new PartComponent('./img/clothes-inner/real/205. inner_layer_clothing-E333- (3).png')], bodyStyleReal),
     new Part('264. inner_layer_clothing-Kal_Illustration- (1)', [new PartComponent('./img/clothes-inner/real/264. inner_layer_clothing-Kal_Illustration- (1).png', torsoLayer.baseSorting - 1, [torsoLayer])], bodyStyleReal),
-    new Part('266. inner_layer_clothing-ISK 1of2', [new PartComponent('./img/clothes-inner/real/266. inner_layer_clothing-ISK 1of2.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer]),
-                                                    new PartComponent('./img/clothes-inner/real/265. inner_layer_clothing-ISK 2of2.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal),
 ]
 const clothesOuterOptions = [
     new Part('outer-layer-clothing-none', [new PartComponent('./img/none.png')], bodyStyleAny),
@@ -637,10 +594,19 @@ const clothesOuterOptions = [
     new Part('110. outer_layer_clothing-cheese- (3)', [new PartComponent('./img/clothes-outer/chibi/110. outer_layer_clothing-cheese- (3).png')], bodyStyleChibi), // Requires no arms?
     new Part('111. outer_layer_clothing-CAPTAINAMD- (2)', [new PartComponent('./img/clothes-outer/chibi/111. outer_layer_clothing-CAPTAINAMD- (2).png')], bodyStyleChibi),
     // real
+    new Part('123. outer_layer_clothing-NYC', [new PartComponent('./img/clothes-inner/real/123. outer_layer_clothing-NYC.png', undefined, [armsLayer, clothesInnerLayer]),
+                                               new PartComponent('./img/arms/real/68. hand_gesture-NYC- 2of2.png', hairFrontLayer.baseSorting + 100),
+                                               new PartComponent('./img/arms/real/280. hand_gesture-NYC- 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal), // REQUIRES SPECIFIC ARMS
+    new Part('143. inner_layer_clothing-maru_ccy- (1)', [new PartComponent('./img/clothes-inner/real/143. inner_layer_clothing-maru_ccy- (1).png', undefined, [armsLayer, clothesInnerLayer]),
+                                                        new PartComponent('./img/arms/real/283. hand_gesture-DOKU- (2) behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal), // REQUIRES SPECIFIC ARMS
+    
+    new Part('266. inner_layer_clothing-ISK 1of2', [new PartComponent('./img/clothes-inner/real/266. inner_layer_clothing-ISK 1of2.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer, clothesInnerLayer]),
+                                                    new PartComponent('./img/clothes-inner/real/265. inner_layer_clothing-ISK 2of2.png', torsoLayer.baseSorting - 1, [armsLayer, torsoLayer])], bodyStyleReal),
     new Part('4. outer_layer_clothing-otto- (6)', [new PartComponent('./img/clothes-outer/real/4. outer_layer_clothing-otto- (6).png', hairFrontLayer.baseSorting + 100)], bodyStyleReal),
     new Part('9. outer_layer_clothing-nuji ma infront hair', [new PartComponent('./img/clothes-outer/real/9. outer_layer_clothing-nuji ma infront hair.png', hairFrontLayer.baseSorting + 100)], bodyStyleReal),
     new Part('88. outer_layer_clothing-sumitsuki', [new PartComponent('./img/clothes-outer/real/88. outer_layer_clothing-sumitsuki.png')], bodyStyleReal),
     new Part('92. outer_layer_clothing-WATSON', [new PartComponent('./img/clothes-outer/real/92. outer_layer_clothing-WATSON.png', undefined, [armsLayer])], bodyStyleReal),
+    new Part('122. outer_layer_clothing-ZAWA', [new PartComponent('./img/clothes-inner/real/122. outer_layer_clothing-ZAWA.png', undefined, [armsLayer])], bodyStyleReal),
     new Part('94. outer_layer_clothing-USA- (2)', [new PartComponent('./img/clothes-outer/real/94. outer_layer_clothing-USA- (2).png')], bodyStyleReal), // REQUIRES SPECIFIC ARMS?
     new Part('95. outer_layer_clothing-USA- (1)', [new PartComponent('./img/clothes-outer/real/95. outer_layer_clothing-USA- (1).png')], bodyStyleReal), // REQUIRES SPECIFIC ARMS?
     new Part('97. outer_layer_clothing-otto- (5)', [new PartComponent('./img/clothes-outer/real/97. outer_layer_clothing-otto- (5).png')], bodyStyleReal),
@@ -654,12 +620,41 @@ const clothesOuterOptions = [
     new Part('105. outer_layer_clothing-Kal_Illustration- (1)', [new PartComponent('./img/clothes-outer/real/105. outer_layer_clothing-Kal_Illustration- (1).png')], bodyStyleReal),
     new Part('106. outer_layer_clothing-ICGJ', [new PartComponent('./img/clothes-outer/real/106. outer_layer_clothing-ICGJ.png', undefined, [armsLayer])], bodyStyleReal),
     new Part('107. outer_layer_clothing-GYSTN', [new PartComponent('./img/clothes-outer/real/107. outer_layer_clothing-GYSTN.png')], bodyStyleReal),
-    new Part('108. outer_layer_clothing-DOKU', [new PartComponent('./img/clothes-outer/real/108. outer_layer_clothing-DOKU.png')], bodyStyleReal),
-    new Part('112. outer_layer_clothing-CAPTAINAMD- (1)', [new PartComponent('./img/clothes-outer/real/112. outer_layer_clothing-CAPTAINAMD- (1).png', undefined, [armsLayer]),
+    new Part('108. outer_layer_clothing-DOKU', [new PartComponent('./img/clothes-outer/real/108. outer_layer_clothing-DOKU.png', undefined, [armsLayer]),
+                                                new PartComponent('./img/arms/real/283. hand_gesture-DOKU- (2) behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal), // REQUIRES SPECIFIC ARMS?
+    new Part('112. outer_layer_clothing-CAPTAINAMD- (1)', [new PartComponent('./img/clothes-outer/real/112. outer_layer_clothing-CAPTAINAMD- (1).png', undefined, [armsLayer]), 
                                                            new PartComponent('./img/arms/real/285. hand_gesture-CAPTAINAMD- (1) 1of2.png', torsoLayer.baseSorting - 1),
                                                            new PartComponent('./img/arms/real/81. hand_gesture-CAPTAINAMD- (1) 2of2.png', clothesOuterLayer.baseSorting + 1)], bodyStyleReal), // fix sorting
     new Part('113. outer_layer_clothing-BAN', [new PartComponent('./img/clothes-outer/real/113. outer_layer_clothing-BAN.png')], bodyStyleReal),
     new Part('114. inner_layer_clothing-Kal_Illustration- (2)', [new PartComponent('./img/clothes-outer/real/114. inner_layer_clothing-Kal_Illustration- (2).png')], bodyStyleReal),
+
+    new Part('146. inner_layer_clothing-KIN- (12)', [new PartComponent('./img/clothes-inner/real/146. inner_layer_clothing-KIN- (12).png', undefined, [armsLayer, clothesInnerLayer])], bodyStyleReal), // These all have custom hands
+    new Part('147. inner_layer_clothing-KIN- (11) use body-2', [new PartComponent('./img/clothes-inner/real/147. inner_layer_clothing-KIN- (11) use body-2.png', undefined, [armsLayer, clothesInnerLayer, torsoLayer]),
+                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal),
+    new Part('148. inner_layer_clothing-KIN- (10) use body-2', [new PartComponent('./img/clothes-inner/real/148. inner_layer_clothing-KIN- (10) use body-2.png', undefined, [armsLayer,clothesInnerLayer, torsoLayer]),
+                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal),
+    new Part('149. inner_layer_clothing-KIN- (9) use body-2', [new PartComponent('./img/clothes-inner/real/149. inner_layer_clothing-KIN- (9) use body-2.png', undefined, [armsLayer, clothesInnerLayer, torsoLayer]),
+                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal),
+    new Part('150. inner_layer_clothing-KIN- (8) use body-2', [new PartComponent('./img/clothes-inner/real/150. inner_layer_clothing-KIN- (8) use body-2.png', undefined, [armsLayer, clothesInnerLayer, torsoLayer]),
+                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal),
+    new Part('151. inner_layer_clothing-KIN- (7) use body-2', [new PartComponent('./img/clothes-inner/real/151. inner_layer_clothing-KIN- (7) use body-2.png', undefined, [armsLayer, clothesInnerLayer, torsoLayer]),
+                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal), 
+    new Part('152. inner_layer_clothing-KIN- (6) use body-2', [new PartComponent('./img/clothes-inner/real/152. inner_layer_clothing-KIN- (6) use body-2.png', undefined, [armsLayer, clothesInnerLayer, torsoLayer]),
+                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal), 
+    new Part('153. inner_layer_clothing-KIN- (5) use body-2', [new PartComponent('./img/clothes-inner/real/153. inner_layer_clothing-KIN- (5) use body-2.png', undefined, [armsLayer, clothesInnerLayer, torsoLayer]),
+                                                                new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal), 
+    new Part('154. inner_layer_clothing-KIN- (3)', [new PartComponent('./img/clothes-inner/real/154. inner_layer_clothing-KIN- (3).png', undefined, [armsLayer, clothesInnerLayer, torsoLayer]),
+                                                    new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal), 
+    new Part('155. inner_layer_clothing-KIN- (2)', [new PartComponent('./img/clothes-inner/real/155. inner_layer_clothing-KIN- (2).png', undefined, [armsLayer, clothesInnerLayer, torsoLayer]),
+                                                    new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal),   
+    new Part('156. inner_layer_clothing-KIN- (1) use body-2', [new PartComponent('./img/clothes-inner/real/156. inner_layer_clothing-KIN- (1) use body-2.png', undefined, [armsLayer, clothesInnerLayer, torsoLayer]),
+                                                    new PartComponent('./img/body/real/basebody-real-neck-up.png', torsoLayer.baseSorting - 1, [armsLayer, clothesInnerLayer, torsoLayer])], bodyStyleReal),   
+    new Part('158. inner_layer_clothing-GRNFRG- (2)', [new PartComponent('./img/clothes-inner/real/158. inner_layer_clothing-GRNFRG- (2).png', undefined, [armsLayer, clothesInnerLayer])], bodyStyleReal),  
+    new Part('159. inner_layer_clothing-GRNFRG- (1)', [new PartComponent('./img/clothes-inner/real/159. inner_layer_clothing-GRNFRG- (1).png', undefined, [armsLayer, clothesInnerLayer])], bodyStyleReal),   
+    new Part('162. inner_layer_clothing-CAPTAINAMD- (1)', [new PartComponent('./img/clothes-outer/real/112. outer_layer_clothing-CAPTAINAMD- (1).png', undefined, [armsLayer, clothesInnerLayer]),
+                                                           new PartComponent('./img/clothes-inner/real/162. inner_layer_clothing-CAPTAINAMD- (1).png', clothesInnerLayer.baseSorting, [armsLayer]),
+                                                           new PartComponent('./img/arms/real/285. hand_gesture-CAPTAINAMD- (1) 1of2.png', torsoLayer.baseSorting - 1),
+                                                           new PartComponent('./img/arms/real/81. hand_gesture-CAPTAINAMD- (1) 2of2.png', clothesOuterLayer.baseSorting + 1)], bodyStyleReal), // Requires... something
 ]
 const accessoryHairOptions = [
     // new Part('accessory-none', [new PartComponent('./img/none.png')], bodyStyleAny),
@@ -821,8 +816,8 @@ function forceSize() {
 function initializeCanvas(){
     const canvas = document.getElementById('main-canvas');
     const ctx = canvas.getContext("2d");
-    canvas.width  = 1200;
-    canvas.height = 1200;
+    canvas.width  = 900;
+    canvas.height = 900;
     ctx.fillStyle = "#f0f8ff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
