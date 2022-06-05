@@ -491,6 +491,16 @@ body {
   transform: scale(1.2);
 }
 
+.hair-ahoge > .option-icon {
+  transform: scale(3);
+  top: 120%;
+}
+
+.hair-ahoge.real > .option-icon {
+  transform: scale(5);
+  top: 155%;
+}
+
 .clothes-inner > .option-icon {
   top: -30%;
   transform: scale(1.5)
@@ -521,6 +531,16 @@ body {
   transform: scale(2);
 }
 
+.accessories-body > .option-icon {
+  top: 20%;
+  transform: scale(1);
+}
+
+.accessories-body.real > .option-icon {
+  top: 0%;
+  transform: scale(2);
+}
+
 .footer {
   margin-top: calc(2* 1em);
 }
@@ -530,6 +550,11 @@ body {
 }
 
 .button-arrow-up{
+  background-image: url(../img/site-style/button_arrow.png);
+  background-size: inherit;
+  background-repeat: no-repeat;
+  background-position: center center;
+  aspect-ratio: 54 / 38;
   top: 0;
   position: absolute;
   width: 100%;
@@ -537,6 +562,11 @@ body {
 }
 
 .button-arrow-down{
+  background-image: url(../img/site-style/button_arrow.png);
+  background-size: inherit;
+  background-repeat: no-repeat;
+  background-position: center center;
+  aspect-ratio: 54 / 38;
   bottom: 0;
   position: absolute;
   width: 100%;
@@ -672,7 +702,9 @@ body {
     left: 0;
     position: absolute;
     width: auto;
+    height: 100%;
     transform: rotate(90deg);
+    aspect-ratio: 38 / 52;
   }
   
   .button-arrow-down{
@@ -680,7 +712,9 @@ body {
     right: 0;
     position: absolute;
     width: auto;
+    height: 100%;
     transform: rotate(-90deg);
+    aspect-ratio: 38 / 52;
   }
 
 }
