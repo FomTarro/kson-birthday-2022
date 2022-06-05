@@ -944,7 +944,7 @@ function download(){
         const urlCreator = window.URL || window.webkitURL;
         a.href = urlCreator.createObjectURL(xhr.response);
         // document.getElementById('pop-up-photo').src = a.href;
-        a.download = 'dress_up_doll.png';
+        a.download = 'dress_up_doll_'+ Date.now() +'.png';
         a.style.display = 'none';
         document.body.appendChild(a);
         a.click();
