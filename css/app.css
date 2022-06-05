@@ -454,12 +454,12 @@ body {
 
 .mouth > .option-icon {
   top: 15%;
-  transform: scale(5);
+  transform: scale(8);
 }
 
 .mouth.real > .option-icon {
-  top: 50%;
-  transform: scale(5);
+  top: 100%;
+  transform: scale(8);
 }
 
 .eyes > .option-icon {
@@ -505,6 +505,26 @@ body {
 .clothes-outer > .option-icon {
   top: -30%;
   transform: scale(1.5)
+}
+
+.accessories-hair > .option-icon {
+  top: 50%;
+  transform: scale(1.5);
+}
+
+.accessories-hair.real > .option-icon {
+  top: 50%;
+  transform: scale(2);
+}
+
+.accessories-face > .option-icon {
+  top: 20%;
+  transform: scale(2);
+}
+
+.accessories-face.real > .option-icon {
+  top: 30%;
+  transform: scale(2);
 }
 
 .footer {
