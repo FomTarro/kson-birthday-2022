@@ -90,6 +90,7 @@ function onPartChange(){
         .concat(clothesOuterLayer.components)
         .concat(accessoryHairLayer.components)
         .concat(accessoryFaceLayer.components)
+        .concat(accessoryFaceLayer2.components)
         .concat(accessoryBodyLayer.components)
         .sort(function compare(a, b) {
             if (a.z < b.z) {
@@ -153,6 +154,7 @@ const clothesInnerLayer = new PartLayer(400);
 const clothesOuterLayer = new PartLayer(500);
 const accessoryHairLayer = new PartLayer(700);
 const accessoryFaceLayer = new PartLayer(550);
+const accessoryFaceLayer2 = new PartLayer(550);
 const accessoryBodyLayer = new PartLayer(540);
 
 /**
@@ -177,6 +179,7 @@ function resetDefaults(resetBody){
     clothesOuterLayer.setComponents([]);
     accessoryHairLayer.setComponents([]);
     accessoryFaceLayer.setComponents([]);
+    accessoryFaceLayer2.setComponents([]);
     accessoryBodyLayer.setComponents([]);
 }
 
@@ -528,7 +531,6 @@ const hairExtraOptions = [
     new Part('52. additional_hair-ICGJ- (1)', [new PartComponent('./img/hair-extra/chibi/52. additional_hair-ICGJ- (1).png')], bodyStyleChibi),
     new Part('206. additional_hair-AGS behind cloths', [new PartComponent('./img/hair-extra/chibi/206. additional_hair-AGS behind cloths.png')], bodyStyleChibi),
     new Part('289. additional_hair-UTAH- (3) behind backhair', [new PartComponent('./img/hair-extra/chibi/289. additional_hair-UTAH- (3) behind backhair.png', hairBackLayer.baseSorting - 100)], bodyStyleChibi),
-    // new Part('hairstyle-extra-KM-3', [new PartComponent('./img/hair-extra/additional_hair-KM-3.png')], bodyStyleChibi)
     // real
     new Part('39. additional_hair-RIO- (1) infront hair', [new PartComponent('./img/hair-extra/real/39. additional_hair-RIO- (1) infront hair.png')], bodyStyleReal),
     new Part('40. additional_hair-E333- (1)', [new PartComponent('./img/hair-extra/real/40. additional_hair-E333- (1).png')], bodyStyleReal),
@@ -970,6 +972,17 @@ function setCategoryStatus(status){
             }
         }
     }
+    // TODO: comment this out if we want to be able to Random roll from nothing
+    const miscButtons = document.getElementsByClassName('misc-button')
+    for(let d = 0; d < miscButtons.length; d++){
+        if(status == false){
+            miscButtons[d].disabled = true;
+            miscButtons[d].classList.add('button-disabled');
+        }else{
+            miscButtons[d].disabled = false;
+            miscButtons[d].classList.remove('button-disabled');
+        }
+    }
 }
 
 /**
@@ -1054,6 +1067,8 @@ function initializeCategories(){
     populateOptionGrid(clothesOuterOptions, clothesOuterLayer, 'clothes-outer', '93. outer_layer_clothing-UTAH');
     populateOptionGrid(accessoryHairOptions, accessoryHairLayer, 'accessories-hair', '42. hair_ornament-KM- (8)');
     populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer, 'accessories-face', '228. glasses-AGS');
+    // TODO: this highlights the parts from the other option grid since thet have the same id
+    populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer2, 'accessories-face-2', '228. glasses-AGS');
     populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer, 'accessories-body', '299. accessories-otto- (5)');
     
     showOptions('torso');
@@ -1102,7 +1117,7 @@ function initializePopup(){
 
 function finalize(){
     const popup = document.getElementById('pop-up-container');
-    document.getElementById('pop-up-photo').src = getPhotoURL();
+    document.getElementById('pop-up-photo').style.backgroundImage = 'url('+getPhotoURL()+')';
     popup.classList.remove('hide');
     popup.classList.add('fade-in');
 }
@@ -1141,8 +1156,6 @@ function random(){
     filterAndSelect(mouthOptions, mouthLayer);
     filterAndSelect(hairFrontOptions, hairFrontLayer);
     filterAndSelect(hairBackOptions, hairBackLayer);
-    // TODO: clear all options (except torso)
-    // filterAndSelect(hairExtraOptions, hairExtraLayer);
     filterAndSelect(clothesInnerOptions, clothesInnerLayer);
     filterAndSelect(clothesOuterOptions, clothesOuterLayer);
     filterAndSelect(accessoryHairOptions, accessoryHairLayer);
