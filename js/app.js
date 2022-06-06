@@ -51,11 +51,13 @@ class Part {
      * @param {string} id 
      * @param {PartComponent[]} components 
      * @param {string} bodyStyle
+     * @param {boolean} notRandomable
      */
-    constructor(id, components, bodyStyle){
+    constructor(id, components, bodyStyle, notRandomable){
         this.id = id;
         this.components = components;
         this.bodyStyle = bodyStyle;
+        this.notRandomable = notRandomable
     }
 }
 
@@ -190,6 +192,7 @@ const torsoOptions = [
     new Part('basebody-real-abs', [new PartComponent('./img/body/real/basebody-real-abs.png')], bodyStyleReal)
 ]
 const armsOptions = [
+    new Part('arms-none', [new PartComponent('./img/none.png')], bodyStyleAny, true),
     new Part('216. hand_gesture-Kukie', [new PartComponent('./img/arms/chibi/216. hand_gesture-Kukie.png')], bodyStyleChibi), // use as default
     new Part('55. hand_gesture-yu ya iyaui', [new PartComponent('./img/arms/chibi/207. hand_gesture-yu ya iyaui 1of2.png'),
                                               new PartComponent('./img/arms/chibi/55. hand_gesture-yu ya iyaui 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleChibi),
@@ -247,6 +250,7 @@ const armsOptions = [
     new Part('278. hand_gesture-otto- (2)', [new PartComponent('./img/arms/real/278. hand_gesture-otto- (2).png', torsoLayer.baseSorting - 1)], bodyStyleReal),
 ]
 const eyesOptions = [
+    new Part('eyes-none', [new PartComponent('./img/none.png')], bodyStyleAny, true),
     new Part('eyes-AGS', [new PartComponent('./img/eyes/chibi/eyes-AGS.png')], bodyStyleChibi),
     new Part('eyes-cheese- (1)', [new PartComponent('./img/eyes/chibi/eyes-cheese- (1).png')], bodyStyleChibi), // has mouth
     new Part('eyes-cheese- (2)', [new PartComponent('./img/eyes/chibi/eyes-cheese- (2).png')], bodyStyleChibi),
@@ -316,6 +320,7 @@ const eyesOptions = [
     new Part('eyes-sumitsuki- (7)', [new PartComponent('./img/eyes/real/eyes-sumitsuki- (7).png')], bodyStyleReal),
 ]
 const eyebrowOptions = [
+    new Part('ebebrows-none', [new PartComponent('./img/none.png')], bodyStyleAny),
     new Part('eyebrows_UTAH- (1)', [new PartComponent('./img/eyebrows/chibi/eyebrows_UTAH- (1).png')], bodyStyleChibi),
     new Part('eyebrows_UTAH- (2)', [new PartComponent('./img/eyebrows/chibi/eyebrows_UTAH- (2).png')], bodyStyleChibi),
     new Part('eyebrows-AGS', [new PartComponent('./img/eyebrows/chibi/eyebrows-AGS.png')], bodyStyleChibi),
@@ -359,6 +364,7 @@ const eyebrowOptions = [
 
 ]
 const mouthOptions = [
+    new Part('mouth-none', [new PartComponent('./img/none.png')], bodyStyleAny, true),
     new Part('mouth-AGS', [new PartComponent('./img/mouth/chibi/mouth-AGS.png')], bodyStyleChibi),
     new Part('mouth-cheese- (1)', [new PartComponent('./img/mouth/chibi/mouth-cheese- (1).png')], bodyStyleChibi),
     new Part('mouth-cheese- (3)', [new PartComponent('./img/mouth/chibi/mouth-cheese- (3).png')], bodyStyleChibi),
@@ -414,6 +420,7 @@ const mouthOptions = [
     new Part('mouth-sumitsuki- (6)', [new PartComponent('./img/mouth/real/mouth-sumitsuki- (6).png')], bodyStyleReal),
 ]
 const hairFrontOptions = [
+    new Part('hairstyle-front-none', [new PartComponent('./img/none.png')], bodyStyleAny, true),
     new Part('hair_style-AGS', [new PartComponent('./img/hair-style/chibi/hair_style-AGS.png')], bodyStyleChibi),
     new Part('hair_style-CAPTAINAMD- (2)', [new PartComponent('./img/hair-style/chibi/hair_style-CAPTAINAMD- (2).png')], bodyStyleChibi),
     new Part('hair_style-cheese- (1)', [new PartComponent('./img/hair-style/chibi/hair_style-cheese- (1).png')], bodyStyleChibi),
@@ -476,6 +483,7 @@ const hairFrontOptions = [
     new Part('hair_style-zawa- (2)', [new PartComponent('./img/hair-style/real/hair_style-zawa- (2).png')], bodyStyleReal),
 ]
 const hairBackOptions = [
+    new Part('hairstyle-back-none', [new PartComponent('./img/none.png')], bodyStyleAny, true),
     new Part('back_hair_Kukie', [new PartComponent('./img/hair-back/chibi/back_hair_Kukie.png')], bodyStyleChibi),
     new Part('back_hair-AGS', [new PartComponent('./img/hair-back/chibi/back_hair-AGS.png')], bodyStyleChibi),
     new Part('back_hair-tabetai', [new PartComponent('./img/hair-back/chibi/back_hair-tabetai.png')], bodyStyleChibi),
@@ -523,7 +531,7 @@ const hairExtraOptions = [
     // new Part('hairstyle-extra-KM-3', [new PartComponent('./img/hair-extra/additional_hair-KM-3.png')], bodyStyleChibi)
 ]
 const hairAhogeOptions = [
-    new Part('accessory-none', [new PartComponent('./img/none.png')], bodyStyleAny),
+    new Part('hair-ahoge-none', [new PartComponent('./img/none.png')], bodyStyleAny),
     new Part('ahoge-KM', [new PartComponent('./img/hair-ahoge/chibi/ahoge-KM.png')], bodyStyleChibi),
     new Part('ahoge-Kukie', [new PartComponent('./img/hair-ahoge/chibi/ahoge-Kukie.png')], bodyStyleChibi),
     new Part('ahoge-RIO', [new PartComponent('./img/hair-ahoge/chibi/ahoge-RIO.png')], bodyStyleChibi),
@@ -537,6 +545,7 @@ const hairAhogeOptions = [
     new Part('ahoge-yu ya iyaui', [new PartComponent('./img/hair-ahoge/real/ahoge-yu ya iyaui.png')], bodyStyleReal),
 ]
 const clothesInnerOptions = [
+    new Part('inner-layer-clothing-none', [new PartComponent('./img/none.png')], bodyStyleAny, true),
     new Part('199. inner_layer_clothing-KM- (1)', [new PartComponent('./img/clothes-inner/chibi/199. inner_layer_clothing-KM- (1).png')], bodyStyleChibi), // use as default
     new Part('127. inner_layer_clothing-yu ya iyaui', [new PartComponent('./img/clothes-inner/chibi/127. inner_layer_clothing-yu ya iyaui.png')], bodyStyleChibi),
     new Part('130. inner_layer_clothing-YUUTA- (3)', [new PartComponent('./img/clothes-inner/chibi/130. inner_layer_clothing-YUUTA- (3).png')], bodyStyleChibi),
@@ -769,7 +778,7 @@ const accessoryFaceOptions = [
     new Part('258. accessories-E333- (2) behind eyes', [new PartComponent('./img/accessory-face/real/258. accessories-E333- (2) behind eyes.png', eyesLayer.baseSorting -  1)], bodyStyleReal),
 ]
 const accessoryBodyOptions = [
-    new Part('hairstyle-extra-none', [new PartComponent('./img/none.png')], bodyStyleAny),
+    new Part('accessory-body-none', [new PartComponent('./img/none.png')], bodyStyleAny),
     new Part('6. accessories-UTAH- (9)', [new PartComponent('./img/accessory-body/chibi/6. accessories-UTAH- (9).png', clothesOuterLayer.baseSorting + 500, [armsLayer]),
                                           new PartComponent('./img/accessory-body/chibi/297. accessories-UTAH- (6).png', hairBackLayer.baseSorting - 500)], bodyStyleChibi),
     new Part('291. accessories-sumitsuki- (2) for chibi behind back_hair', [new PartComponent('./img/accessory-body/chibi/291. accessories-sumitsuki- (2) for chibi behind back_hair.png', hairBackLayer.baseSorting - 100)], bodyStyleChibi),
@@ -1104,7 +1113,7 @@ function random(){
      * @param {PartLayer} layer 
      */
     function filterAndSelect(options, layer){
-        const filtered = options.filter(x => (x.bodyStyle == currentBodyStyle || x.bodyStyle == bodyStyleAny));
+        const filtered = options.filter(x => ((x.bodyStyle == currentBodyStyle || x.bodyStyle == bodyStyleAny) && !x.notRandomable));
         const option = filtered[Math.floor(Math.random() * filtered.length)];
         if(option){
             selectOption(option, options, layer);
