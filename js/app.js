@@ -120,6 +120,7 @@ function onPartChange(){
     }
 
     function renderComponentsInOrder(){
+        const marquee = document.getElementById('marquee-text').classList.add('hide');
         const canvas = document.getElementById('main-canvas');
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -133,17 +134,6 @@ function onPartChange(){
         filteredComponents[i].img = new Image();
         filteredComponents[i].img.src = filteredComponents[i].url;
         filteredComponents[i].img.onload = onImageLoad;
-        // TODO: why doesn't this work?
-        // if(layers[i].img 
-        // && layers[i].img.src != layers[i].url 
-        // && layers[i].img.complete == true){
-        //     count--;
-        // }
-        // else{
-        //     layers[i].img = new Image();
-        //     layers[i].img.src = layers[i].url;
-        //     layers[i].img.onload = onImageLoad;
-        // }
     }
 }
 
@@ -701,7 +691,7 @@ const clothesOuterOptions = [
                                                            new PartComponent('./img/arms/real/81. hand_gesture-CAPTAINAMD- (1) 2of2.png', clothesOuterLayer.baseSorting + 1)], bodyStyleReal), // Requires... something
 ]
 const accessoryHairOptions = [
-    new Part('accessory-none', [new PartComponent('./img/none.png')], bodyStyleAny),
+    new Part('accessory-hair-none', [new PartComponent('./img/none.png')], bodyStyleAny),
     new Part('17. hair_ornament-YUUTA', [new PartComponent('./img/accessory-hair/chibi/17. hair_ornament-YUUTA.png')], bodyStyleChibi),
     new Part('14. hair_ornament-icho', [new PartComponent('./img/accessory-hair/chibi/14. hair_ornament-icho.png')], bodyStyleChibi),
     new Part('25. hair_ornament-matiasja', [new PartComponent('./img/accessory-hair/chibi/25. hair_ornament-matiasja.png')], bodyStyleChibi),
@@ -738,7 +728,7 @@ const accessoryHairOptions = [
     new Part('35. hair_ornament-ISK', [new PartComponent('./img/accessory-hair/real/35. hair_ornament-ISK.png')], bodyStyleReal),
 ]
 const accessoryFaceOptions = [
-    new Part('accessory-none', [new PartComponent('./img/none.png')], bodyStyleAny),
+    new Part('accessory-face-none', [new PartComponent('./img/none.png')], bodyStyleAny),
     new Part('227. glasses-YUUTA', [new PartComponent('./img/accessory-face/chibi/227. glasses-YUUTA.png')], bodyStyleChibi),
     new Part('228. glasses-AGS', [new PartComponent('./img/accessory-face/chibi/228. glasses-AGS.png')], bodyStyleChibi),
     new Part('229. accessories-UTAH- (7)', [new PartComponent('./img/accessory-face/chibi/229. accessories-UTAH- (7).png')], bodyStyleChibi),
@@ -886,6 +876,9 @@ function populateOptionGrid(options, layer, layerName, iconPartId){
             });
 
             // create icons
+            if(option.id.includes('none')){
+                
+            }
             const sortedComponents = option.components.sort(function compare(a, b) {
                 let aVal = a.z;
                 if(!a.z){
@@ -900,11 +893,19 @@ function populateOptionGrid(options, layer, layerName, iconPartId){
                 }
                 return 1;
             });
-            for(let j = 0; j < sortedComponents.length; j++){
+            if(option.id.includes('none')){
                 const img = document.createElement('img');
-                img.classList.add('option-icon');
-                img.src = sortedComponents[j].url;
+                img.classList.add('option-icon', 'none-icon');
+                img.src = './img/site-style/cross.png'
                 button.append(img);
+                button.classList.add('none');   
+            }else{
+                for(let j = 0; j < sortedComponents.length; j++){
+                    const img = document.createElement('img');
+                    img.classList.add('option-icon');
+                    img.src = sortedComponents[j].url;
+                    button.append(img);
+                }
             }
             const frame = document.createElement('div');
             frame.classList.add('frame', 'option-frame');
@@ -1065,6 +1066,8 @@ function download(){
 function initializePopup(){
     const popup = document.getElementById('pop-up-container');
     popup.addEventListener('click', close);
+    const popupClose = document.getElementById('pop-up-close');
+    popupClose.addEventListener('click', close);
     const popUpInner = document.getElementById('pop-up-content-container');
     popUpInner.addEventListener('click', function(e) {
         e.stopPropagation();

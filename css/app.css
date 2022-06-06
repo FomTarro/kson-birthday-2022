@@ -5,10 +5,12 @@ html {
 main {
   font-size: 10pt;
   height: 75vh;
+  scrollbar-width: none;
 }
 
 ul {
   width: 100%;
+  margin-bottom: 1.5rem;
 }
 
 li {
@@ -18,6 +20,18 @@ li {
 h2 {
   margin-top: 0;
   text-transform: uppercase !important;
+}
+
+h5 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase !important;
+  font-weight: bold;
+}
+
+h6{
+  margin-bottom: 0.1em;
+  font-weight: bold;
 }
 
 body {
@@ -105,6 +119,20 @@ body {
   border-radius: 38px;
 }
 
+#pop-up-close{
+  position: absolute;
+  margin: 0.5em;
+  z-index: 200;
+  width: 48px;
+  height: 48px;
+  top: 0;
+  right: 0;
+}
+
+#pop-up-close > img {
+  height: 100%;
+}
+
 #pop-up-photo{
   aspect-ratio: 1;
 }
@@ -115,17 +143,27 @@ body {
   height: calc(100% - 64px);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 5px;
+  grid-template-rows: repeat(2, 1fr);
   grid-row-gap: 5px;
 }
 
 .pop-up-1{
-  grid-area: 1 / 1 / 3 / 2;
+  grid-area: 1 / 1 / 2 / 3;
 }
 .pop-up-2{
-  grid-area: 3 / 1 / 4 / 2
+  grid-area: 2 / 1 / 3 / 3;
+  padding: 1em;
+  align-items: start;
+  overflow-y: scroll;
+  scrollbar-width: 4px;
+  
 }
+.pop-up-2 > ::-webkit-scrollbar { 
+  width: auto;
+  height: auto;
+  background: aliceblue;
+}
+
 .pop-up-3{
   height: 78px;
   width: 100%;
@@ -163,6 +201,19 @@ body {
   width: 90%;
   max-width: 1200px;
   gap: 5px;
+}
+
+#marquee-text{
+  transform: translateY(-50%);
+  position: absolute;
+  z-index: 101;
+  top: calc(50% - 72px);
+  animation: anim-float 2s ease-in-out infinite alternate;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc;
+  -webkit-text-stroke: 1px black;
 }
 
 #main-canvas-container{
@@ -542,6 +593,13 @@ body {
   transform: scale(2);
 }
 
+.none-icon{
+  top: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  transform: scale(0.5) !important;
+}
+
 .footer {
   margin-top: calc(2* 1em);
 }
@@ -641,10 +699,10 @@ body {
 }
 @keyframes anim-float {
   from {
-    transform: rotate(-15deg);
+    transform: rotate(-5deg);
   }
   to {
-    transform: rotate(15deg);
+    transform: rotate(5deg);
   }
 }
 
