@@ -98,6 +98,7 @@ function onPartChange(){
         .concat(accessoryFaceLayer3.components)
         .concat(accessoryBodyLayer.components)
         .concat(accessoryBodyLayer2.components)
+        .concat(accessoryBodyLayer3.components)
         .sort(function compare(a, b) {
             if (a.z < b.z) {
                 return -1;
@@ -166,6 +167,7 @@ const accessoryFaceLayer2 = new PartLayer(550, 'accessories-face-2');
 const accessoryFaceLayer3 = new PartLayer(550, 'accessories-face-3');
 const accessoryBodyLayer = new PartLayer(540, 'accessories-body');
 const accessoryBodyLayer2 = new PartLayer(540, 'accessories-body-2');
+const accessoryBodyLayer3 = new PartLayer(540, 'accessories-body-3');
 
 /**
  * 
@@ -195,6 +197,7 @@ function resetDefaults(resetBody){
     selectOption(findNoneOption(accessoryFaceOptions), accessoryFaceOptions, accessoryFaceLayer3);
     selectOption(findNoneOption(accessoryBodyOptions), accessoryBodyOptions, accessoryBodyLayer);
     selectOption(findNoneOption(accessoryBodyOptions), accessoryBodyOptions, accessoryBodyLayer2);
+    selectOption(findNoneOption(accessoryBodyOptions), accessoryBodyOptions, accessoryBodyLayer3);
 }
 
 /**
@@ -1092,6 +1095,7 @@ function initializeCategories(){
     populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer3, '228. glasses-AGS', 3);
     populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer,  '299. accessories-otto- (5)');
     populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer2,  '299. accessories-otto- (5)', 2);
+    populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer2,  '299. accessories-otto- (5)', 3);
     
     showOptions('torso');
 }
