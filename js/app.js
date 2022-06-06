@@ -151,7 +151,7 @@ const torsoLayer = new PartLayer(0, 'torso');
 const armsLayer = new PartLayer(50, 'arms');
 const eyesLayer = new PartLayer(200, 'eyes');
 const eyebrowLayer = new PartLayer(300, 'eyebrows');
-const mouthLayer = new PartLayer(100, 'mouth');
+const mouthLayer = new PartLayer(210, 'mouth');
 const hairFrontLayer = new PartLayer(600, 'hair-front');
 const hairBackLayer = new PartLayer(-200, 'hair-back');
 const hairExtraLayer = new PartLayer(-100, 'hair-extra');
@@ -551,7 +551,6 @@ const hairExtraOptions = [
     new Part('51. additional_hair-ICGJ- (2)', [new PartComponent('./img/hair-extra/chibi/51. additional_hair-ICGJ- (2).png')], bodyStyleChibi),
     new Part('52. additional_hair-ICGJ- (1)', [new PartComponent('./img/hair-extra/chibi/52. additional_hair-ICGJ- (1).png')], bodyStyleChibi),
     new Part('206. additional_hair-AGS behind cloths', [new PartComponent('./img/hair-extra/chibi/206. additional_hair-AGS behind cloths.png')], bodyStyleChibi),
-    new Part('289. additional_hair-UTAH- (3) behind backhair', [new PartComponent('./img/hair-extra/chibi/289. additional_hair-UTAH- (3) behind backhair.png', hairBackLayer.baseSorting - 100)], bodyStyleChibi),
     // real
     new Part('39. additional_hair-RIO- (1) infront hair', [new PartComponent('./img/hair-extra/real/39. additional_hair-RIO- (1) infront hair.png')], bodyStyleReal),
     new Part('40. additional_hair-E333- (1)', [new PartComponent('./img/hair-extra/real/40. additional_hair-E333- (1).png')], bodyStyleReal),
@@ -813,6 +812,7 @@ const accessoryBodyOptions = [
     new Part('6. accessories-UTAH- (9)', [new PartComponent('./img/accessory-body/chibi/6. accessories-UTAH- (9).png', clothesOuterLayer.baseSorting + 500, [armsLayer]),
                                           new PartComponent('./img/accessory-body/chibi/297. accessories-UTAH- (6).png', hairBackLayer.baseSorting - 500)], bodyStyleChibi),
     new Part('291. accessories-sumitsuki- (2) for chibi behind back_hair', [new PartComponent('./img/accessory-body/chibi/291. accessories-sumitsuki- (2) for chibi behind back_hair.png', hairBackLayer.baseSorting - 100)], bodyStyleChibi),
+    new Part('289. additional_hair-UTAH- (3) behind backhair', [new PartComponent('./img/hair-extra/chibi/289. additional_hair-UTAH- (3) behind backhair.png', hairBackLayer.baseSorting - 100)], bodyStyleChibi),
     // real                   
     new Part('115. accessories-TNTR', [new PartComponent('./img/accessory-body/real/115. accessories-TNTR.png')], bodyStyleReal),
     new Part('119. accessories-KIN- (4)', [new PartComponent('./img/accessory-body/real/119. accessories-KIN- (4).png')], bodyStyleReal),
