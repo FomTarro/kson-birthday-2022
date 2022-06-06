@@ -529,6 +529,14 @@ const hairExtraOptions = [
     new Part('206. additional_hair-AGS behind cloths', [new PartComponent('./img/hair-extra/chibi/206. additional_hair-AGS behind cloths.png')], bodyStyleChibi),
     new Part('289. additional_hair-UTAH- (3) behind backhair', [new PartComponent('./img/hair-extra/chibi/289. additional_hair-UTAH- (3) behind backhair.png', hairBackLayer.baseSorting - 100)], bodyStyleChibi),
     // new Part('hairstyle-extra-KM-3', [new PartComponent('./img/hair-extra/additional_hair-KM-3.png')], bodyStyleChibi)
+    // real
+    new Part('39. additional_hair-RIO- (1) infront hair', [new PartComponent('./img/hair-extra/real/39. additional_hair-RIO- (1) infront hair.png')], bodyStyleReal),
+    new Part('40. additional_hair-E333- (1)', [new PartComponent('./img/hair-extra/real/40. additional_hair-E333- (1).png')], bodyStyleReal),
+    new Part('46. additional_hair-RIO- (3) behind hair', [new PartComponent('./img/hair-extra/real/46. additional_hair-RIO- (3) behind hair.png', hairBackLayer.baseSorting - 100)], bodyStyleReal),
+    new Part('47. additional_hair-otto behind hair', [new PartComponent('./img/hair-extra/real/47. additional_hair-otto behind hair.png', hairBackLayer.baseSorting - 100)], bodyStyleReal),
+    new Part('53. additional_hair-E333- (3) behind hair', [new PartComponent('./img/hair-extra/real/53. additional_hair-E333- (3) behind hair.png', hairBackLayer.baseSorting - 100)], bodyStyleReal),
+    new Part('54. additional_hair-E333- (2) behind hair', [new PartComponent('./img/hair-extra/real/54. additional_hair-E333- (2) behind hair.png', hairBackLayer.baseSorting - 100)], bodyStyleReal),
+    new Part('287. additional_hair-RIO- (2) behind body', [new PartComponent('./img/hair-extra/real/287. additional_hair-RIO- (2) behind body.png', hairBackLayer.baseSorting - 100)], bodyStyleReal),
 ]
 const hairAhogeOptions = [
     new Part('hair-ahoge-none', [new PartComponent('./img/none.png')], bodyStyleAny),
