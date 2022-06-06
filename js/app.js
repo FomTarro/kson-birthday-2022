@@ -120,7 +120,8 @@ function onPartChange(){
     }
 
     function renderComponentsInOrder(){
-        const marquee = document.getElementById('marquee-text').classList.add('hide');
+        document.getElementById('marquee-text').classList.add('hide');
+        document.getElementById('marquee-image').classList.add('hide');
         const canvas = document.getElementById('main-canvas');
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -920,11 +921,11 @@ function populateOptionGrid(options, layer, layerName, iconPartId){
     navButton.classList.add('border-box', 'category-button', layerName);
     navButton.innerHTML = layerName;
     navButton.addEventListener('click', function(){
-        const siblings = categoryContainer.children;
-        for(let h=0;h<siblings.length;h++){
-            siblings[h].classList.remove('selected');
-        }
-        navButton.classList.add('selected');
+        // const siblings = categoryContainer.children;
+        // for(let h=0;h<siblings.length;h++){
+        //     siblings[h].classList.remove('selected');
+        // }
+        // navButton.classList.add('selected');
         showOptions(layerName);
     });
     const iconPart = options.find(x => x.id == iconPartId);
@@ -959,6 +960,14 @@ function setCategoryStatus(status){
  * @param {string} layerName 
  */
 function showOptions(layerName){
+    const categoryContainer = document.getElementById('category-inner-inner-container');
+    const siblings = categoryContainer.children;
+    for(let h=0;h<siblings.length;h++){
+        siblings[h].classList.remove('selected');
+        if(siblings[h].classList.contains(layerName)){
+            siblings[h].classList.add('selected');
+        }
+    }
     const allOptionContainers = document.getElementsByClassName('option-container');
     for(let k = 0; k < allOptionContainers.length; k++){
         allOptionContainers[k].classList.add('hide');
@@ -970,7 +979,7 @@ function showOptions(layerName){
 function forceSize() {
     const canvas = document.getElementById('main-canvas-container');
     const drawer = document.getElementById('right-side-container')
-    if(window.innerWidth >= 1200){
+    if(window.innerWidth >= 1000){
         drawer.style.height = canvas.offsetHeight + 1 + 'px'
     }else{
         drawer.style.height = 'calc('+ (window.innerHeight - canvas.offsetHeight + 1 - 5) + 'px - 2em)';
@@ -982,8 +991,8 @@ function initializeCanvas(){
     const ctx = canvas.getContext("2d");
     canvas.width  = 900;
     canvas.height = 900;
-    ctx.fillStyle = "#f0f8ff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // ctx.fillStyle = "#f0f8ff";
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function initializeCategories(){
