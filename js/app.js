@@ -1095,8 +1095,8 @@ function initializeCategories(){
     populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer3, '228. glasses-AGS', 3);
     populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer,  '299. accessories-otto- (5)');
     populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer2,  '299. accessories-otto- (5)', 2);
-    populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer2,  '299. accessories-otto- (5)', 3);
-    
+    populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer3,  '299. accessories-otto- (5)', 3);
+
     showOptions('torso');
 }
 
