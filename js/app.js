@@ -2,10 +2,12 @@ class PartLayer {
     /**
      * Class for holding information about a rendering layer of the doll
      * @param {number} baseSorting Layer to sort components on, if none is provided
+     * @param {string} name
      */
-    constructor(baseSorting) {
+    constructor(baseSorting, name) {
       this.baseSorting = baseSorting;
       this.components = [];
+      this.name = name;
     }
     
     /**
@@ -87,11 +89,15 @@ function onPartChange(){
         .concat(hairExtraLayer.components)
         .concat(hairAhogeLayer.components)
         .concat(clothesInnerLayer.components)
+        .concat(clothesInnerLayer2.components)
         .concat(clothesOuterLayer.components)
         .concat(accessoryHairLayer.components)
+        .concat(accessoryHairLayer2.components)
         .concat(accessoryFaceLayer.components)
         .concat(accessoryFaceLayer2.components)
+        .concat(accessoryFaceLayer3.components)
         .concat(accessoryBodyLayer.components)
+        .concat(accessoryBodyLayer2.components)
         .sort(function compare(a, b) {
             if (a.z < b.z) {
                 return -1;
@@ -141,21 +147,25 @@ function onPartChange(){
     }
 }
 
-const torsoLayer = new PartLayer(0);
-const armsLayer = new PartLayer(50);
-const eyesLayer = new PartLayer(200);
-const eyebrowLayer = new PartLayer(300);
-const mouthLayer = new PartLayer(100);
-const hairFrontLayer = new PartLayer(600);
-const hairBackLayer = new PartLayer(-200);
-const hairExtraLayer = new PartLayer(-100);
-const hairAhogeLayer = new PartLayer(650);
-const clothesInnerLayer = new PartLayer(400);
-const clothesOuterLayer = new PartLayer(500);
-const accessoryHairLayer = new PartLayer(700);
-const accessoryFaceLayer = new PartLayer(550);
-const accessoryFaceLayer2 = new PartLayer(550);
-const accessoryBodyLayer = new PartLayer(540);
+const torsoLayer = new PartLayer(0, 'torso');
+const armsLayer = new PartLayer(50, 'arms');
+const eyesLayer = new PartLayer(200, 'eyes');
+const eyebrowLayer = new PartLayer(300, 'eyebrows');
+const mouthLayer = new PartLayer(100, 'mouth');
+const hairFrontLayer = new PartLayer(600, 'hair-front');
+const hairBackLayer = new PartLayer(-200, 'hair-back');
+const hairExtraLayer = new PartLayer(-100, 'hair-extra');
+const hairAhogeLayer = new PartLayer(650, 'hair-ahoge');
+const clothesInnerLayer = new PartLayer(400, 'clothes-inner');
+const clothesInnerLayer2 = new PartLayer(400, 'clothes-inner-2');
+const clothesOuterLayer = new PartLayer(500, 'clothes-outer');
+const accessoryHairLayer = new PartLayer(700, 'accessories-hair');
+const accessoryHairLayer2 = new PartLayer(700, 'accessories-hair-2');
+const accessoryFaceLayer = new PartLayer(550, 'accessories-face');
+const accessoryFaceLayer2 = new PartLayer(550, 'accessories-face-2');
+const accessoryFaceLayer3 = new PartLayer(550, 'accessories-face-3');
+const accessoryBodyLayer = new PartLayer(540, 'accessories-body');
+const accessoryBodyLayer2 = new PartLayer(540, 'accessories-body-2');
 
 /**
  * 
@@ -167,20 +177,32 @@ function resetDefaults(resetBody){
         setCategoryStatus(false);
         torsoLayer.setComponents([]);
     }
-    armsLayer.setComponents([]);
-    eyesLayer.setComponents([]);
-    mouthLayer.setComponents([]);
-    eyebrowLayer.setComponents([]);
-    hairFrontLayer.setComponents([]);
-    hairBackLayer.setComponents([]);
-    hairExtraLayer.setComponents([]);
-    hairAhogeLayer.setComponents([]);
-    clothesInnerLayer.setComponents([]);
-    clothesOuterLayer.setComponents([]);
-    accessoryHairLayer.setComponents([]);
-    accessoryFaceLayer.setComponents([]);
-    accessoryFaceLayer2.setComponents([]);
-    accessoryBodyLayer.setComponents([]);
+    selectOption(findNoneOption(armsOptions), armsOptions, armsLayer);
+    selectOption(findNoneOption(eyesOptions), eyesOptions, eyesLayer);
+    selectOption(findNoneOption(mouthOptions), mouthOptions, mouthLayer);
+    selectOption(findNoneOption(eyebrowOptions), eyebrowOptions, eyebrowLayer);
+    selectOption(findNoneOption(hairFrontOptions), hairFrontOptions, hairFrontLayer);
+    selectOption(findNoneOption(hairBackOptions), hairBackOptions, hairBackLayer);
+    selectOption(findNoneOption(hairExtraOptions), hairExtraOptions, hairExtraLayer);
+    selectOption(findNoneOption(hairAhogeOptions), hairAhogeOptions, hairAhogeLayer);
+    selectOption(findNoneOption(clothesInnerOptions), clothesInnerOptions, clothesInnerLayer);
+    selectOption(findNoneOption(clothesInnerOptions), clothesInnerOptions, clothesInnerLayer2);
+    selectOption(findNoneOption(clothesOuterOptions), clothesOuterOptions, clothesOuterLayer);
+    selectOption(findNoneOption(accessoryHairOptions), accessoryHairOptions, accessoryHairLayer);
+    selectOption(findNoneOption(accessoryHairOptions), accessoryHairOptions, accessoryHairLayer2);
+    selectOption(findNoneOption(accessoryFaceOptions), accessoryFaceOptions, accessoryFaceLayer);
+    selectOption(findNoneOption(accessoryFaceOptions), accessoryFaceOptions, accessoryFaceLayer2);
+    selectOption(findNoneOption(accessoryFaceOptions), accessoryFaceOptions, accessoryFaceLayer3);
+    selectOption(findNoneOption(accessoryBodyOptions), accessoryBodyOptions, accessoryBodyLayer);
+    selectOption(findNoneOption(accessoryBodyOptions), accessoryBodyOptions, accessoryBodyLayer2);
+}
+
+/**
+ * 
+ * @param {Part[]} options 
+ */
+function findNoneOption(options){
+    return options.find(x => x.id.includes('none'));
 }
 
 const bodyStyleChibi = 'chibi';
@@ -388,7 +410,6 @@ const mouthOptions = [
     new Part('mouth-BAN', [new PartComponent('./img/mouth/real/mouth-BAN.png')], bodyStyleReal),
     new Part('mouth-cheese- (2)', [new PartComponent('./img/mouth/real/mouth-cheese- (2).png')], bodyStyleReal),
     new Part('mouth-E333- (1)', [new PartComponent('./img/mouth/real/mouth-E333- (1).png')], bodyStyleReal),
-    new Part('mouth-E333- (2)', [new PartComponent('./img/mouth/real/mouth-E333- (2).png')], bodyStyleReal),
     new Part('mouth-E333- (3)', [new PartComponent('./img/mouth/real/mouth-E333- (3).png')], bodyStyleReal),
     new Part('mouth-E333- (4)', [new PartComponent('./img/mouth/real/mouth-E333- (4).png')], bodyStyleReal),
     new Part('mouth-E333- (5)', [new PartComponent('./img/mouth/real/mouth-E333- (5).png')], bodyStyleReal),
@@ -858,7 +879,7 @@ function setBodyStyle(newBodyStyle){
  */
 function selectOption(option, options, layer){
     // body determines style
-    const button = document.getElementById(option.id);
+    const button = document.getElementById(option.id+'-'+layer.name);
     if(button){
         const siblings = button.parentElement.children;
         for(let i = 0; i < siblings.length; i++){
@@ -878,17 +899,17 @@ function selectOption(option, options, layer){
  * @param {PartLayer} layer
  * @param {HTMLElement} container 
  */
-function populateOptionGrid(options, layer, layerName, iconPartId){
+function populateOptionGrid(options, layer, iconPartId, numericDisplay){
     const container = document.createElement('div');
     container.classList.add('center-align', 'option-container', 'grid-box');
-    container.id = layerName;
+    container.id = layer.name;
     for(let i = 0; i < options.length; i++){
         for(let f = 0; f < 1; f++){
             const button = document.createElement('button');
 
             const option = options[i];
-            button.id = option.id;
-            button.classList.add('option-button', 'grid-item', option.bodyStyle, layerName);
+            button.id = option.id + '-' +layer.name;
+            button.classList.add('option-button', 'grid-item', option.bodyStyle, layer.name);
             button.addEventListener('click', function(){
                 console.log('click ' + option.id);
                 selectOption(option, options, layer);
@@ -897,29 +918,26 @@ function populateOptionGrid(options, layer, layerName, iconPartId){
 
             // create icons
             if(option.id.includes('none')){
-                
-            }
-            const sortedComponents = option.components.sort(function compare(a, b) {
-                let aVal = a.z;
-                if(!a.z){
-                    aVal = layer.baseSorting;
-                }
-                let bVal = b.z;
-                if(!b.z){
-                    bVal = layer.baseSorting;
-                }
-                if (aVal < bVal) {
-                    return -1;
-                }
-                return 1;
-            });
-            if(option.id.includes('none')){
                 const img = document.createElement('img');
                 img.classList.add('option-icon', 'none-icon');
                 img.src = './img/site-style/cross.png'
                 button.append(img);
                 button.classList.add('none');   
             }else{
+                const sortedComponents = option.components.sort(function compare(a, b) {
+                    let aVal = a.z;
+                    if(!a.z){
+                        aVal = layer.baseSorting;
+                    }
+                    let bVal = b.z;
+                    if(!b.z){
+                        bVal = layer.baseSorting;
+                    }
+                    if (aVal < bVal) {
+                        return -1;
+                    }
+                    return 1;
+                });
                 for(let j = 0; j < sortedComponents.length; j++){
                     const img = document.createElement('img');
                     img.classList.add('option-icon');
@@ -937,15 +955,9 @@ function populateOptionGrid(options, layer, layerName, iconPartId){
 
     const categoryContainer = document.getElementById('category-inner-inner-container');
     const navButton = document.createElement('button');
-    navButton.classList.add('border-box', 'category-button', layerName);
-    navButton.innerHTML = layerName;
+    navButton.classList.add('border-box', 'category-button', layer.name);
     navButton.addEventListener('click', function(){
-        // const siblings = categoryContainer.children;
-        // for(let h=0;h<siblings.length;h++){
-        //     siblings[h].classList.remove('selected');
-        // }
-        // navButton.classList.add('selected');
-        showOptions(layerName);
+        showOptions(layer.name);
     });
     const iconPart = options.find(x => x.id == iconPartId);
     if(iconPart){
@@ -955,6 +967,12 @@ function populateOptionGrid(options, layer, layerName, iconPartId){
             img.src = iconPart.components[j].url;
             navButton.append(img);
         }
+    }
+    if(numericDisplay){
+        const num = document.createElement('div');
+        num.classList.add('category-number');
+        num.innerHTML = numericDisplay;
+        navButton.appendChild(num);
     }
     categoryContainer.appendChild(navButton);
 }
@@ -973,16 +991,16 @@ function setCategoryStatus(status){
         }
     }
     // TODO: comment this out if we want to be able to Random roll from nothing
-    const miscButtons = document.getElementsByClassName('misc-button')
-    for(let d = 0; d < miscButtons.length; d++){
-        if(status == false){
-            miscButtons[d].disabled = true;
-            miscButtons[d].classList.add('button-disabled');
-        }else{
-            miscButtons[d].disabled = false;
-            miscButtons[d].classList.remove('button-disabled');
-        }
-    }
+    // const miscButtons = document.getElementsByClassName('misc-button')
+    // for(let d = 0; d < miscButtons.length; d++){
+    //     if(status == false){
+    //         miscButtons[d].disabled = true;
+    //         miscButtons[d].classList.add('button-disabled');
+    //     }else{
+    //         miscButtons[d].disabled = false;
+    //         miscButtons[d].classList.remove('button-disabled');
+    //     }
+    // }
 }
 
 /**
@@ -1054,22 +1072,26 @@ function initializeCategories(){
         clearTimeout(timeoutId);
     })
 
-    populateOptionGrid(torsoOptions, torsoLayer, 'torso', 'basebody-chibi');
-    populateOptionGrid(armsOptions, armsLayer, 'arms', '216. hand_gesture-Kukie');
-    populateOptionGrid(eyesOptions, eyesLayer, 'eyes', 'eyes-AGS');
-    populateOptionGrid(eyebrowOptions, eyebrowLayer, 'eyebrows', 'eyebrows_UTAH- (1)');
-    populateOptionGrid(mouthOptions, mouthLayer, 'mouth', 'mouth-AGS');
-    populateOptionGrid(hairFrontOptions, hairFrontLayer, 'hair-front', 'hair_style-cheese- (2)');
-    populateOptionGrid(hairBackOptions, hairBackLayer, 'hair-back', 'back_hair-UTAH- (3)');
-    populateOptionGrid(hairExtraOptions, hairExtraLayer, 'hair-extra', '48. additional_hair-KM- (3) behind hair');
-    populateOptionGrid(hairAhogeOptions, hairAhogeLayer, 'hair-ahoge', 'ahoge-UTAH');
-    populateOptionGrid(clothesInnerOptions, clothesInnerLayer, 'clothes-inner', '165. inner_layer_clothing-AGS');
-    populateOptionGrid(clothesOuterOptions, clothesOuterLayer, 'clothes-outer', '93. outer_layer_clothing-UTAH');
-    populateOptionGrid(accessoryHairOptions, accessoryHairLayer, 'accessories-hair', '42. hair_ornament-KM- (8)');
-    populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer, 'accessories-face', '228. glasses-AGS');
-    // TODO: this highlights the parts from the other option grid since thet have the same id
-    populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer2, 'accessories-face-2', '228. glasses-AGS');
-    populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer, 'accessories-body', '299. accessories-otto- (5)');
+    populateOptionGrid(torsoOptions, torsoLayer, 'basebody-chibi');
+    populateOptionGrid(armsOptions, armsLayer, '216. hand_gesture-Kukie');
+    populateOptionGrid(eyesOptions, eyesLayer, 'eyes-AGS');
+    populateOptionGrid(eyebrowOptions, eyebrowLayer, 'eyebrows_UTAH- (1)');
+    populateOptionGrid(mouthOptions, mouthLayer, 'mouth-AGS');
+    populateOptionGrid(hairFrontOptions, hairFrontLayer, 'hair_style-cheese- (2)');
+    populateOptionGrid(hairBackOptions, hairBackLayer, 'back_hair-UTAH- (3)');
+    populateOptionGrid(hairExtraOptions, hairExtraLayer, '48. additional_hair-KM- (3) behind hair');
+    populateOptionGrid(hairAhogeOptions, hairAhogeLayer, 'ahoge-UTAH');
+    populateOptionGrid(clothesInnerOptions, clothesInnerLayer, '165. inner_layer_clothing-AGS');
+    populateOptionGrid(clothesInnerOptions, clothesInnerLayer2, '165. inner_layer_clothing-AGS', 2);
+    populateOptionGrid(clothesOuterOptions, clothesOuterLayer, '93. outer_layer_clothing-UTAH');
+    populateOptionGrid(accessoryHairOptions, accessoryHairLayer, '42. hair_ornament-KM- (8)');
+    populateOptionGrid(accessoryHairOptions, accessoryHairLayer2, '42. hair_ornament-KM- (8)', 2);
+    populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer, '228. glasses-AGS');
+    // TODO: this highlights the parts from the other option grid since they have the same ID
+    populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer2, '228. glasses-AGS', 2);
+    populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer3, '228. glasses-AGS', 3);
+    populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer,  '299. accessories-otto- (5)');
+    populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer2,  '299. accessories-otto- (5)', 2);
     
     showOptions('torso');
 }

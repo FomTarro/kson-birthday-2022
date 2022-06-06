@@ -472,6 +472,21 @@ body {
   box-sizing: border-box;
 }
 
+.category-number{
+  /* animation: anim-float 2s ease-in-out infinite alternate; */
+  transform: rotate(15deg);
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  bottom: 5%;
+  right: 5%;
+  font-size: 1.3rem;
+  color: red;
+  z-index: 100;
+  line-height: 1rem;
+  opacity: 0.75;
+}
+
 #options-container{
   background-image: url('../img/site-style/background1.png');
   background-size: inherit;
@@ -603,7 +618,7 @@ body {
   top: 155%;
 }
 
-.clothes-inner > .option-icon {
+.clothes-inner > .option-icon,.clothes-inner-2 > .option-icon  {
   top: -30%;
   transform: scale(1.5)
 }
@@ -613,32 +628,32 @@ body {
   transform: scale(1.5)
 }
 
-.accessories-hair > .option-icon {
+.accessories-hair > .option-icon, .accessories-hair-2 > .option-icon, .accessories-hair-3 > .option-icon {
   top: 50%;
   transform: scale(1.5);
 }
 
-.accessories-hair.real > .option-icon {
+.accessories-hair.real > .option-icon,.accessories-hair-2.real > .option-icon,.accessories-hair-3.real > .option-icon {
   top: 50%;
   transform: scale(2);
 }
 
-.accessories-face > .option-icon {
+.accessories-face > .option-icon,.accessories-face-2 > .option-icon,.accessories-face-3 > .option-icon {
   top: 20%;
   transform: scale(2);
 }
 
-.accessories-face.real > .option-icon {
+.accessories-face.real > .option-icon,.accessories-face-2.real > .option-icon,.accessories-face-3.real > .option-icon {
   top: 30%;
   transform: scale(2);
 }
 
-.accessories-body > .option-icon {
+.accessories-body > .option-icon,.accessories-body-2 > .option-icon,.accessories-body-3 > .option-icon  {
   top: 20%;
   transform: scale(1);
 }
 
-.accessories-body.real > .option-icon {
+.accessories-body.real > .option-icon,.accessories-body-2.real > .option-icon,.accessories-body-3.real > .option-icon {
   top: 0%;
   transform: scale(2);
 }
@@ -749,10 +764,10 @@ body {
 }
 @keyframes anim-float {
   from {
-    transform: rotate(-5deg);
+    transform: rotate(-3deg);
   }
   to {
-    transform: rotate(5deg);
+    transform: rotate(3deg);
   }
 }
 
