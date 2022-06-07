@@ -645,6 +645,11 @@ body {
   transform: scale(2);
 }
 
+.class-18-hair_ornament-VOLDOX > .option-icon{
+  top: 20%;
+  transform: scale(1.5);
+}
+
 .accessories-face > .option-icon,.accessories-face-2 > .option-icon,.accessories-face-3 > .option-icon {
   top: 20%;
   transform: scale(2);
@@ -663,6 +668,53 @@ body {
 .accessories-body.real > .option-icon,.accessories-body-2.real > .option-icon,.accessories-body-3.real > .option-icon {
   top: 0%;
   transform: scale(2);
+}
+
+.class-outer_chibicensorbar > .option-icon {
+  top: -10% !important;
+  transform: scale(1) !important;
+}
+
+.class-5-outer_layer_clothing-otto--2 > .option-icon {
+  top: -10% !important;
+}
+
+.class-289-additional_hair-UTAH--3-behind-backhair > .option-icon {
+  top: -10% !important;
+  transform: scale(1) !important;
+}
+
+.class-301-background-cheese > .option-icon {
+  top: 0% !important;
+  transform: scale(1) !important;
+}
+
+.class-292-accessories-Kal_Illustration--3-behind-body > .option-icon {
+  top: 0% !important; 
+  transform: scale(0.75) !important;
+}
+
+.class-87-accessories-sumitsuki--2-for-TS > .option-icon {
+  top: 0% !important; 
+  transform: scale(0.75) !important;
+}
+
+.class-86-outer_layer_clothing-hokke > .option-icon {
+  top: 0% !important; 
+  transform: scale(1.55) !important;
+}
+
+.class-115-accessories-TNTR > .option-icon {
+  top: -40% !important;
+}
+
+.class-ahoge-hokke > .option-icon {
+  top: 90%;
+}
+
+.class-51-additional_hair-ICGJ--2 > .option-icon, .class-52-additional_hair-ICGJ--1 > .option-icon{
+  top: 10%;
+  transform: scale(1);
 }
 
 .none-icon{

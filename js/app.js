@@ -56,7 +56,7 @@ class Part {
      * @param {boolean} notRandomable
      */
     constructor(id, components, bodyStyle, notRandomable){
-        this.id = id;
+        this.id = makeIdSafe(id);
         this.components = components;
         this.bodyStyle = bodyStyle;
         this.notRandomable = notRandomable
@@ -208,6 +208,16 @@ function findNoneOption(options){
     return options.find(x => x.id.includes('none'));
 }
 
+/**
+ * 
+ * @param {string} id 
+ */
+function makeIdSafe(id){
+    const safeId = 'class-'+id.replace(/ /g, '-').replace(/[.!?\\\)\(]/g, '');
+    console.log(safeId);
+    return safeId;
+}
+
 const bodyStyleChibi = 'chibi';
 const bodyStyleReal = 'real'
 const bodyStyleAny = 'any';
@@ -263,8 +273,9 @@ const armsOptions = [
                                                  new PartComponent('./img/arms/real/275. hand_gesture-otto- (5) 1of2.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
     new Part('67. hand_gesture-otto- (1) 2of2', [new PartComponent('./img/arms/real/67. hand_gesture-otto- (1) 2of2.png', hairFrontLayer.baseSorting + 100),
                                                  new PartComponent('./img/arms/real/279. hand_gesture-otto- (1) 1of2.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
-    new Part('68. hand_gesture-NYC- 2of2', [new PartComponent('./img/arms/real/68. hand_gesture-NYC- 2of2.png', hairFrontLayer.baseSorting + 100),
-                                            new PartComponent('./img/arms/real/280. hand_gesture-NYC- 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal), // These go with her outfit
+    new Part('68. hand_gesture-NYC- 2of2',  [new PartComponent('./img/arms/real/68. hand_gesture-NYC- 2of2-left.png', torsoLayer.baseSorting + 1),
+                                             new PartComponent('./img/arms/real/68. hand_gesture-NYC- 2of2-right.png', hairFrontLayer.baseSorting + 100),
+                                             new PartComponent('./img/arms/real/280. hand_gesture-NYC- 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal), // These go with her outfit
     new Part('68. hand_gesture-NYC- (2) 2of2-left', [new PartComponent('./img/arms/real/68. hand_gesture-NYC- (2) 2of2-left.png', torsoLayer.baseSorting + 1),
                                             new PartComponent('./img/arms/real/68. hand_gesture-NYC- (2) 2of2-right.png', hairFrontLayer.baseSorting + 100),
                                             new PartComponent('./img/arms/real/280. hand_gesture-NYC- (2) 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal), // These go with her outfit
@@ -274,7 +285,7 @@ const armsOptions = [
                                                         new PartComponent('./img/arms/real/282. hand_gesture-Kak_Illustration 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
     new Part('80. hand_gesture-DOKU- (1) 2of2', [new PartComponent('./img/arms/real/80. hand_gesture-DOKU- (1) 2of2.png', hairFrontLayer.baseSorting + 100),
                                                  new PartComponent('./img/arms/real/284. hand_gesture-DOKU- (1) 1of2 behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
-    new Part('81. hand_gesture-CAPTAINAMD- (1) 2of2.png', [new PartComponent('./img/arms/real/285. hand_gesture-CAPTAINAMD- (1) 1of2.png', torsoLayer.baseSorting - 1),
+    new Part('81. hand_gesture-CAPTAINAMD- (1) 2of2', [new PartComponent('./img/arms/real/285. hand_gesture-CAPTAINAMD- (1) 1of2.png', torsoLayer.baseSorting - 1),
                                                            new PartComponent('./img/arms/real/81. hand_gesture-CAPTAINAMD- (1) 2of2.png', hairFrontLayer.baseSorting + 100)], bodyStyleReal),
     new Part('272. hand_gesture-TNTR behind body', [new PartComponent('./img/arms/real/272. hand_gesture-TNTR behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
     new Part('269. hand_gesture-sumitsuki- (2) behind body', [new PartComponent('./img/arms/real/269. hand_gesture-sumitsuki- (2) behind body.png', torsoLayer.baseSorting - 1)], bodyStyleReal),
@@ -846,7 +857,7 @@ const accessoryBodyOptions = [
     new Part('5. outer_layer_clothing-otto- (2)', [new PartComponent('./img/accessory-body/real/5. outer_layer_clothing-otto- (2).png', clothesOuterLayer.baseSorting + 500)], bodyStyleReal),
     new Part('86. outer_layer_clothing-hokke', [new PartComponent('./img/accessory-body/real/86. outer_layer_clothing-hokke.png', clothesOuterLayer.baseSorting + 1)], bodyStyleReal),
     // any
-    new Part('296. SE-sumitsuki', [  new PartComponent('./img/clothes-outer/chibi/293. outer_layer_clothing-PDR 2of2.png', hairBackLayer.baseSorting - 100)], bodyStyleAny),
+    new Part('293. outer_layer_clothing-PDR 2of2', [  new PartComponent('./img/clothes-outer/chibi/293. outer_layer_clothing-PDR 2of2.png', hairBackLayer.baseSorting - 100)], bodyStyleAny),
     new Part('294. accessories-Kal_Illustration- (1)', [new PartComponent('./img/accessory-body/chibi/294. accessories-Kal_Illustration- (1).png', hairBackLayer.baseSorting - 100)], bodyStyleAny),
     new Part('296. SE-sumitsuki', [new PartComponent('./img/accessory-body/chibi/296. SE-sumitsuki.png', hairBackLayer.baseSorting - 100)], bodyStyleAny),
     new Part('298. accessories-otto- (4)', [new PartComponent('./img/accessory-body/chibi/298. accessories-otto- (4).png', hairBackLayer.baseSorting - 100)], bodyStyleAny),
@@ -863,15 +874,15 @@ function setBodyStyle(newBodyStyle){
     if(currentBodyStyle != newBodyStyle){
         resetDefaults(true);
         if(newBodyStyle == bodyStyleChibi){
-            const armOption = armsOptions.find(x => x.id == '216. hand_gesture-Kukie');
+            const armOption = armsOptions.find(x => x.id == makeIdSafe('216. hand_gesture-Kukie'));
             selectOption(armOption, armsOptions, armsLayer);
-            const clothesInnerOption = clothesInnerOptions.find(x => x.id == '199. inner_layer_clothing-KM- (1)');
+            const clothesInnerOption = clothesInnerOptions.find(x => x.id == makeIdSafe('199. inner_layer_clothing-KM- (1)'));
             selectOption(clothesInnerOption, clothesInnerOptions, clothesInnerLayer);
         }
         else if(newBodyStyle == bodyStyleReal){
-            const armOption = armsOptions.find(x => x.id == '283. hand_gesture-DOKU- (2) behind body');
+            const armOption = armsOptions.find(x => x.id == makeIdSafe('283. hand_gesture-DOKU- (2) behind body'));
             selectOption(armOption, armsOptions, armsLayer);
-            const clothesInnerOption = clothesInnerOptions.find(x => x.id == '126. inner_layer_clothing-sumitsuki');
+            const clothesInnerOption = clothesInnerOptions.find(x => x.id == makeIdSafe('126. inner_layer_clothing-sumitsuki'));
             selectOption(clothesInnerOption, clothesInnerOptions, clothesInnerLayer);
         }
     }
@@ -930,7 +941,7 @@ function populateOptionGrid(options, layer, iconPartId, numericDisplay){
 
             const option = options[i];
             button.id = option.id + '-' +layer.name;
-            button.classList.add('option-button', 'grid-item', option.bodyStyle, layer.name);
+            button.classList.add('option-button', 'grid-item', option.bodyStyle, layer.name, option.id);
             button.addEventListener('click', function(){
                 console.log('click ' + option.id);
                 selectOption(option, options, layer);
@@ -980,7 +991,7 @@ function populateOptionGrid(options, layer, iconPartId, numericDisplay){
     navButton.addEventListener('click', function(){
         showOptions(layer.name);
     });
-    const iconPart = options.find(x => x.id == iconPartId);
+    const iconPart = options.find(x => x.id == makeIdSafe(iconPartId));
     if(iconPart){
         for(let j = 0; j < iconPart.components.length; j++){
             const img = document.createElement('img');
@@ -1108,7 +1119,6 @@ function initializeCategories(){
     populateOptionGrid(accessoryHairOptions, accessoryHairLayer, '42. hair_ornament-KM- (8)');
     populateOptionGrid(accessoryHairOptions, accessoryHairLayer2, '42. hair_ornament-KM- (8)', 2);
     populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer, '228. glasses-AGS');
-    // TODO: this highlights the parts from the other option grid since they have the same ID
     populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer2, '228. glasses-AGS', 2);
     populateOptionGrid(accessoryFaceOptions, accessoryFaceLayer3, '228. glasses-AGS', 3);
     populateOptionGrid(accessoryBodyOptions, accessoryBodyLayer,  '299. accessories-otto- (5)');
@@ -1123,8 +1133,7 @@ function getPhotoURL(){
         return document.getElementById('main-canvas').toDataURL('image/png');
     }catch(e){
         console.error(e);
-        // TODO placeholder "Something went wrong!"
-        return './img/body/basebody_chibi.png';
+        return './img/site-style/cross.png';
     }
 }
 
