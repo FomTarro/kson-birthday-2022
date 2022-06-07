@@ -214,7 +214,6 @@ function findNoneOption(options){
  */
 function makeIdSafe(id){
     const safeId = 'class-'+id.replace(/ /g, '-').replace(/[.!?\\\)\(]/g, '');
-    console.log(safeId);
     return safeId;
 }
 
