@@ -942,7 +942,7 @@ function populateOptionGrid(options, layer, iconPartId, numericDisplay){
             button.id = option.id + '-' +layer.name;
             button.classList.add('option-button', 'grid-item', option.bodyStyle, layer.name, option.id);
             button.addEventListener('click', function(){
-                console.log('click ' + option.id);
+                // console.log('click ' + option.id);
                 selectOption(option, options, layer);
                 onPartChange();
             });
